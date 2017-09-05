@@ -18,7 +18,7 @@ app.all('/*', function (req, res, next) {
 
 app.get("/spelers", function (request, response) {
     var mongoClient = require('mongodb').MongoClient;
-    var url = 'mongodb://localhost:27017/test';
+    var url = 'mongodb://localhost:27017/Minesweeper';
     mongoClient.connect(url, function (err, db) {
         console.log("Connected successfully to server");
         var collection = db.collection('spelers');
@@ -39,7 +39,7 @@ app.post("/spelers", function (request, response) {
         time: request.body.time
     }
     var mongoClient = require('mongodb').MongoClient;
-    var url = 'mongodb://localhost:27017/test';
+    var url = 'mongodb://localhost:27017/Minesweeper';
     mongoClient.connect(url, function (err, db) {
         var collection = db.collection('spelers');
         collection.insertOne(event, function (err, r) {

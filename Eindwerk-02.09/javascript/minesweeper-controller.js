@@ -39,6 +39,18 @@ function onLeft(){
             }
         }
     }
+    if (board.keepPlaying == false){
+        console.log(board.keepPlaying)
+        if (board.gameEnd == 'Boom!'){
+            console.log('U heeft op een mijn geklikt, u bent verloren!')
+        } else {
+            timeOnGameStop()
+            $('#frm').submit()
+            console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
+        }
+    }
+   
+        
 
 }
 function onRight(){
@@ -48,6 +60,14 @@ function onRight(){
     var y = id.substr(n + 1)
     board.onRightClick(x,y)
     $('#'+id).text(board.board[x][y].flagState[board.board[x][y].rightClick])
+    if (board.keepPlaying == false){
+        if (board.gameEnd == 'Boom!'){
+            console.log('U heeft op een mijn geklikt, u bent verloren!')
+        } else {
+            console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
+        }
+    }
+        
 }
 
 function getFieldVal(e) {
