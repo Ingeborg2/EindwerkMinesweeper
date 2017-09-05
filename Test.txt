@@ -1,2 +1,0 @@
-test file om naar github te pushen
-wijziging aangebracht in eindwerkMinesweeper/test.txt

@@ -1,0 +1,16 @@
+
+.table{
+  background-color: lightgrey;
+}
+
+.mineBtn {
+  height: 30px;
+  width: 30px;
+  background-color: gold;
+  border: 1px solid black
+}
+.turned {
+  height: 30px;
+  width: 30px;
+  border: 1px solid black
+}
