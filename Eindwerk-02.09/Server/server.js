@@ -35,7 +35,7 @@ app.post("/spelers", function (request, response) {
     var event = {
         name: request.body.name,
         rows: request.body.rows,
-        cols: request.body.rows,
+        cols: request.body.colsc,
         time: request.body.time
     }
     var mongoClient = require('mongodb').MongoClient;
