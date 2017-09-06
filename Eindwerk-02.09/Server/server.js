@@ -19,6 +19,7 @@ app.all('/*', function (req, res, next) {
 app.get("/spelers", function (request, response) {
     var mongoClient = require('mongodb').MongoClient;
     var url = 'mongodb://localhost:27017/Minesweeper';
+    console.log(request.query.name)
     mongoClient.connect(url, function (err, db) {
         console.log("Connected successfully to server");
         var collection = db.collection('spelers');
