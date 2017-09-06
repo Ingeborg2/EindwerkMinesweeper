@@ -19,6 +19,8 @@ $(function() {
         $(this).hide();
         $('#btn_pause').show();
         stopTimer = setInterval(countTime, 1000);
+        $('#btn_restart').hide();
+        $('#btn_pause').show();
     });
 
     $('#btn_pause').click(function(){

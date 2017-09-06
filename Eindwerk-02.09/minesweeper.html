@@ -20,7 +20,13 @@
 
     <title>Minesweeper</title>
 </head>
+<!--////////////////////////////////////////CLOCK//////////////////////////////////////////////-->
+<div id="clock"></div>
+
+<!-- //////////////////////////////////////////FORM////////////////////////////////////////////////-->
+
 <!-- ////////////////////////////////////////MINESWEEPER///////////////////////////////////////-->
+
 <body>
     <div id="gameInterrupted">
         <h1>PAUZE</h1>
@@ -51,43 +57,66 @@
     <input type="number" name="rows" id="numberOfRows" required/>
     <label for="numberOfMines">Aantal mijnen:</label>
     <input type="number" name="mines" id="numberOfMines" required/>
-    <input type="hidden" name="time" id="time" value= 0>
+    <input type="hidden" name="time" id="time" value=0>
     <input type="button" id="btn_startGame" value='START SPEL'>
     <input type="submit" id="btn2" value="Submit score" onclick="timeOnGameStop()" class="submitBtn">
 </form> 
     <br>
     <br>
-<!-- //////////////////////////////////////////TOPSPELERS////////////////////////////////////////////////-->        
+    <!-- //////////////////////////////////////////TOPSPELERS////////////////////////////////////////////////-->
     <table id="topspeler" style="display: none">
-    <tr>
-        <td>Name : </td>
-        <td>columns : </td>
-        <td>Rows : </td>
-        <td>Time : </td>
-    </tr>
+        <tr>
+            <td>Name : </td>
+            <td>columns : </td>
+            <td>Rows : </td>
+            <td>Time : </td>
+            <td>Mines : </td>
+        </tr>
     </table>
     <input type="button" id="btn" value="topspelers">
 
-<!-- //////////////////////////////////////////FORM////////////////////////////////////////////////-->        
+    <!-- //////////////////////////////////////////FORM////////////////////////////////////////////////-->
 
     <script>
         ////////////////////////////////////// POST EN GET OP SERVER///////////////////////////////////////
         $('#topspeler').hide()
 
         $('#btn').click(function () {
-            
+
+            var name = $('#naamSpeler').val();
+            var rows = parseInt($('#numberOfRows').val());
+            var cols = parseInt($('#numberOfCols').val());
+            var mines = parseInt($('#numberOfMines').val());
+            var querystring = "?"
+
             $('#topspeler').show()
-            if($('.listitem')){
-            $('.listitem').remove()
+            if ($('.listitem')) {
+                $('.listitem').remove()
             }
+
+            if (name != "") {
+                querystring += 'name=' + name + '&'
+            }
+
+            if (rows != "" && cols != "" && mines != "") {
+                querystring += 'rows=' + rows + '&cols=' + cols + '&mines=' + mines
+            }
+            else{
+                querystring.slice(0,querystring.length-1)
+            }
+
+            if (querystring == "?") {
+                querystring = ""
+            }
+
             $.ajax({
                 // publieke open dataset opvragen
-                url: "http://127.0.0.1:8081/spelers",
+                url: "http://127.0.0.1:8081/spelers" + querystring,
                 dataType: "json",   //parse returned JSON
                 crossDomain: true,
                 success: function (json) {
                     $.each(json, function (k, v) {
-                        $("#topspeler").append($('<tr>').attr('class','listitem').html("<td>" + v.name +"</td> <td>" + v.rows + "</td><td>" + v.cols + "</td><td>" + v.time+"</td>"))
+                        $("#topspeler").append($('<tr>').attr('class', 'listitem').html("<td>" + v.name + "</td> <td>" + v.rows + "</td><td>" + v.cols + "</td><td>" + v.time + "</td><td>" + v.mines + "</td>"))
                     });
                 },
 
@@ -98,7 +127,6 @@
                 }
             })
         })
-
     </script>
 </body>
 
