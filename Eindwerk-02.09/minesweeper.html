@@ -33,28 +33,28 @@
 
     <!-- //////////////////////////////////////////FORM////////////////////////////////////////////////-->
 
-<form method="POST" action="http://127.0.0.1:8081/spelers" id="frm">
-    <input type="button" id="btn_pause" value="PAUSE">
-    <input type="button" id="btn_restart" value="RESTART">
+    <form method="POST" action="http://127.0.0.1:8081/spelers" id="frm">
+        <input type="button" id="btn_pause" value="PAUSE">
+        <input type="button" id="btn_restart" value="RESTART">
+        <br>
+        <br>
+        <label for="naamSpeler">Naam speler: </label>
+        <input type="text" name="name" id="naamSpeler" minlength=1 required/>
+        <br>
+        <br>
+        <label for="numberOfCols">Aantal kolommen: </label>
+        <input type="number" name="cols" id="numberOfCols" required/>
+        <label for="numberOfRows">Aantal rijen: </label>
+        <input type="number" name="rows" id="numberOfRows" required/>
+        <label for="numberOfMines">Aantal mijnen:</label>
+        <input type="number" name="mines" id="numberOfMines" required/>
+        <input type="hidden" name="time" id="time" value=0>
+        <input type="button" id="btn_startGame" value='START SPEL'>
+        <input type="submit" id="btn2" value="Submit score" onclick="timeOnGameStop()">
+    </form>
     <br>
     <br>
-    <label for="naamSpeler">Naam speler: </label>
-    <input type="text" name="name" id="naamSpeler" minlength=1 required/>
-    <br>
-    <br>
-    <label for="numberOfCols">Aantal kolommen: </label>
-    <input type="number" name="cols" id="numberOfCols" required/>
-    <label for="numberOfRows">Aantal rijen: </label>
-    <input type="number" name="rows" id="numberOfRows" required/>
-    <label for="numberOfMines">Aantal mijnen:</label>
-    <input type="number" name="mines" id="numberOfMines" required/>
-    <input type="hidden" name="time" id="time" value= 0>
-    <input type="button" id="btn_startGame" value='START SPEL'>
-    <!-- <input type="submit" id="btn2" value="Submit score" onclick="timeOnGameStop()"> -->
-</form> 
-    <br>
-    <br>
-<!-- //////////////////////////////////////////TOPSPELERS////////////////////////////////////////////////-->        
+    <!-- //////////////////////////////////////////TOPSPELERS////////////////////////////////////////////////-->
     <table id="topspeler" style="display: none">
         <tr>
             <td>Name : </td>
@@ -80,21 +80,29 @@
             var mines = parseInt($('#numberOfMines').val());
             var querystring = "?"
 
-            if(name != ""){
-                querystring += 'name='+name
-            }
-            
-
             $('#topspeler').show()
             if ($('.listitem')) {
                 $('.listitem').remove()
             }
-            if(querystring =="?"){
+
+            if (name != "") {
+                querystring += 'name=' + name + '&'
+            }
+
+            if (rows != "" && cols != "" && mines != "") {
+                querystring += 'rows=' + rows + '&cols=' + cols + '&mines=' + mines
+            }
+            else{
+                querystring.slice(0,querystring.length-1)
+            }
+
+            if (querystring == "?") {
                 querystring = ""
             }
+
             $.ajax({
                 // publieke open dataset opvragen
-                url: "http://127.0.0.1:8081/spelers"+querystring,
+                url: "http://127.0.0.1:8081/spelers" + querystring,
                 dataType: "json",   //parse returned JSON
                 crossDomain: true,
                 success: function (json) {
