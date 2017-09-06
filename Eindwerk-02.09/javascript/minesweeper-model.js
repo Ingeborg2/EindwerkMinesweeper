@@ -13,7 +13,7 @@ function FieldObj() {
     this.mine = false;
     this.leftClick = false;
     this.rightClick = 0;
-    this.mineNeighbours = 0;
+    this.mineNeighbours = '';
 };
 
 Board.prototype.onRightClick = function(row, col) {
@@ -22,7 +22,6 @@ Board.prototype.onRightClick = function(row, col) {
 }
 
 Board.prototype.onLeftClick = function(row, col) {
-    console.log('binne')
     if (this.board[row][col].leftClick == false) {
         this.board[row][col].onLeftClick()
         if (!this.board[row][col].mine) {
@@ -100,6 +99,9 @@ Board.prototype.buildBoard = function(cols, rows, mines) {
                         if (!(dx == 0 && dy == 0)) {
                             if ((x + dx <= this.rows - 1) && (x + dx >= 0) && (y + dy <= this.cols - 1) && (y + dy >= 0)) {
                                 if (this.board[x + dx][y + dy] != this.mine) {
+                                    if (this.board[x + dx][y + dy].mineNeighbours == '') {
+                                        this.board[x + dx][y + dy].mineNeighbours = 0
+                                    }
                                     this.board[x + dx][y + dy].mineNeighbours++
                                 }
                             }

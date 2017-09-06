@@ -28,27 +28,27 @@
     </table>
     <!-- ////////////////////////////////////////CLOCK//////////////////////////////////////////////-->
     <div id="clock"></div>
-    <form method="POST" action="http://127.0.0.1:8081/spelers">
+
+    <form method="POST" action="http://127.0.0.1:8081/spelers" id="frm">
         <input type="button" id="btn_pause" value="PAUSE">
         <input type="button" id="btn_restart" value="RESTART">
         <br>
         <br>
         <label for="naamSpeler">Naam speler: </label>
-        <input type="text" name="name" id="naamSpeler" />
+        <input type="text" name="name" id="naamSpeler" required/>
         <br>
         <br>
         <label for="numberOfCols">Aantal kolommen: </label>
-        <input type="number" name="cols" id="numberOfCols" />
+        <input type="number" name="cols" id="numberOfCols" required/>
         <label for="numberOfRows">Aantal rijen: </label>
-        <input type="number" name="rows" id="numberOfRows" />
+        <input type="number" name="rows" id="numberOfRows" required/>
         <label for="numberOfMines">Aantal mijnen:</label>
-        <input type="number" name="mines" id="numberOfMines" />
-        <input type="hidden" name="time" id="time">
+        <input type="number" name="mines" id="numberOfMines" required/>
+        <input type="hidden" name="time" id="time" value=0>
         <input type="button" id="btn_startGame" value='START SPEL'>
         <input type="submit" id="btn2" value="Submit score" onclick="timeOnGameStop()">
     </form>
-    <br>
-    <br>
+
     <!-- //////////////////////////////////////////TOPSPELERS////////////////////////////////////////////////-->
     <table id="topspeler" style="display: none">
         <tr>
