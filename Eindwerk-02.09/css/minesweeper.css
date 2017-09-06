@@ -17,3 +17,10 @@
 .error{
   color: red;
 }
+.submitBtn{
+  display: none;
+}
+
+#gameInterrupted{
+  display: none
+}
