@@ -17,10 +17,16 @@ $(function() {
 
     $('#btn_restart').click(function() {
         stopTimer = setInterval(countTime, 1000);
+        $('#btn_restart').hide();
+        $('#btn_pause').show();
     });
 
     $('#btn_pause').click(timeOnGameStop);
-
+    $('#btn_pause').click(function() {
+        $('#btn_restart').show();
+        $('#btn_pause').hide();
+    })
+    $('#btn_restart').hide();
     showGameConfigFromLocalStorage();
 }); // *****     end of onload function     ******
 
@@ -68,4 +74,3 @@ function showCounterInMinutesAndSeconds(counter) {
     var seconds = counter - minutes * 60;
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 }
-
