@@ -40,12 +40,12 @@ function onLeft(){
         }
     }
     if (board.keepPlaying == false){
-        console.log(board.keepPlaying)
         if (board.gameEnd == 'Boom!'){
             console.log('U heeft op een mijn geklikt, u bent verloren!')
         } else {
             timeOnGameStop()
-            $('#frm').submit()
+            $('#frm').validate()
+            console.log($('#frm').valid())
             console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
         }
     }
@@ -64,6 +64,9 @@ function onRight(){
         if (board.gameEnd == 'Boom!'){
             console.log('U heeft op een mijn geklikt, u bent verloren!')
         } else {
+            timeOnGameStop()
+            $('#frm').validate()
+            console.log($('#frm').valid())
             console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
         }
     }

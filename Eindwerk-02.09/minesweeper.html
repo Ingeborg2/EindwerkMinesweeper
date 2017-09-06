@@ -10,6 +10,8 @@
 
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script> -->
     <script src="jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script src="javascript/minesweeper-controller.js"></script>
     <script src="javascript/minesweeper-model.js"></script>
     <script src="javascript/minesweeper-timer.js"></script>
@@ -29,13 +31,15 @@
     <!-- ////////////////////////////////////////CLOCK//////////////////////////////////////////////-->
     <div id="clock"></div>
 
+    <!-- //////////////////////////////////////////TOPSPELERS////////////////////////////////////////////////-->
+
     <form method="POST" action="http://127.0.0.1:8081/spelers" id="frm">
         <input type="button" id="btn_pause" value="PAUSE">
         <input type="button" id="btn_restart" value="RESTART">
         <br>
         <br>
         <label for="naamSpeler">Naam speler: </label>
-        <input type="text" name="name" id="naamSpeler" required/>
+        <input type="text" name="name" id="naamSpeler" minlength=1 required/>
         <br>
         <br>
         <label for="numberOfCols">Aantal kolommen: </label>
@@ -46,10 +50,12 @@
         <input type="number" name="mines" id="numberOfMines" required/>
         <input type="hidden" name="time" id="time" value=0>
         <input type="button" id="btn_startGame" value='START SPEL'>
-        <input type="submit" id="btn2" value="Submit score" onclick="timeOnGameStop()">
+        <!-- <input type="submit" id="btn2" value="Submit score" onclick="timeOnGameStop()"> -->
     </form>
-
+    <br>
+    <br>
     <!-- //////////////////////////////////////////TOPSPELERS////////////////////////////////////////////////-->
+
     <table id="topspeler" style="display: none">
         <tr>
             <td>Name : </td>
