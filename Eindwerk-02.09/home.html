@@ -1,12 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="jquery-3.2.1.min.js"></script>
     <title>Document</title>
+    <style>
+        img{
+            height: 200px;
+            width: 150px;
+        }
+    </style>
+    <script>
+            $(document).ready(function(){
+                $('#mineBtn').click(function(){
+                    window.location.href = "minesweeper.html";
+                })
+                $('#blackJackBtn').click(function(){
+                    window.location.href = "minesweeper.html";
+                })
+            })
+    </script>
 </head>
+
 <body>
-    <h1>Ik ben de homepage</h1>
+    <h1>The Game Station</h1>
+    <div>
+        <div>
+            <button id="mineBtn">
+                <div>
+                    <img src="images/bombTemp.png" alt="Minesweeper Image">
+                </div>
+                <div>
+                    <h2>Minesweeper</h2>
+                </div>
+            </button>
+        </div>
+        <div>
+            <button id="blackJackBtn">
+                <div>
+                    <img src="images/questionMark.png" alt="Black Jack Image">
+                </div>
+                <div>
+                    <h2>Black Jack</h2>
+                </div>
+            </button>
+        </div>
+    </div>
 </body>
+
 </html>
