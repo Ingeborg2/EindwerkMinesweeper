@@ -5,10 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/minesweeperlogin.css">
+>>>>>>> f6c4bae7c7d10a1d28cd155525552d081f0e6d89
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script> -->
     <script src="jquery-3.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
@@ -17,9 +24,21 @@
     crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/minesweeperlogin.css">
     
+=======
+    <script src="javascript/minesweeper-timer.js"></script>
+    <script src="javascript/minesweeper-dom-storage.js"></script>
+
+>>>>>>> f6c4bae7c7d10a1d28cd155525552d081f0e6d89
     <title>Document</title>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
+            $('#signInBtn').click(function() {
+                $('#signInFrm').validate()
+                if ($('#signInFrm').valid()) {
+                    window.location.href = "home.html";
+                }
+            });
+
             var height = Math.max(document.body.scrollHeight, document.body.offsetHeight,
                 document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
             for (i = 0; i < 200; i++) {
@@ -29,6 +48,7 @@
                 $('body').append('<div class="star f' + randClass + '" style="top:' + randTop + 'px;left:' + randLeft + 'px;"></div>');
 
             }
+<<<<<<< HEAD
             $('#signInBtn').click(function () {
                 $('#signInFrm').validate()
                 if ($('#signInFrm').valid()) {
@@ -36,6 +56,9 @@
                 }
             })
         })
+=======
+        });
+>>>>>>> f6c4bae7c7d10a1d28cd155525552d081f0e6d89
     </script>
 </head>
 
@@ -48,6 +71,7 @@
                 </div>
             </div>
             <div class="row">
+<<<<<<< HEAD
                 <div  id="form">
                     <h2 class="text-center">Login</h2>
                     <form id="signInFrm">
@@ -64,12 +88,28 @@
                         </div>
                     </form>
                 </div>
+=======
+
+                <h2>Login</h2>
+                <form id="signInFrm">
+                    <div class="form-group">
+                        <label for="userName">Username: </label>
+                        <input type="text" name="userName" id="userName" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="userMail">Usermail: </label>
+                        <input type="email" name="userMail" id="userMail" required class="form-control">
+                    </div>
+                    <input type="button" id="signInBtn" value="Sign in!" class="btn btn-danger">
+                </form>
+>>>>>>> f6c4bae7c7d10a1d28cd155525552d081f0e6d89
             </div>
             
             
         </div>
     </div>
 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 
 </html>
