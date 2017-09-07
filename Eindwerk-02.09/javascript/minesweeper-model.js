@@ -7,6 +7,7 @@ function Board(cols, rows, mines) {
     this.keepPlaying = true;
     this.gameEnd = '';
     this.buildBoard();
+    this.gameStart = false;
 }
 
 function FieldObj() {
@@ -16,12 +17,26 @@ function FieldObj() {
     this.mineNeighbours = '';
 };
 
+Board.prototype.undiscovered = function(){
+    var undiscovered = this.mines
+    for (var x = 0; x < this.rows; x++) {
+        for (var y = 0; y < this.cols; y++) {
+            if (this.board[x][y].rightClick == '1'){
+                undiscovered--
+            }
+        }
+    }
+    return undiscovered
+}
+
 Board.prototype.onRightClick = function(row, col) {
+    this.gameStart = true;
     this.board[row][col].onRightClick()
     this.checkWin();
 }
 
 Board.prototype.onLeftClick = function(row, col) {
+    this.gameStart = true;
     if (this.board[row][col].leftClick == false) {
         this.board[row][col].onLeftClick()
         if (!this.board[row][col].mine) {

@@ -1,6 +1,9 @@
 'use strict';
 $( document ).ready(function(){
-    $('#btn_startGame').click(vulTabel)
+    $('#btn_startGame').click(function(){
+        vulTabel();
+        $('#undiscoveredMines').html(board.undiscovered())
+    })
     $('#tableBody').bind('contextmenu', function(e){return false})
 })
 var board;
@@ -41,11 +44,13 @@ function onLeft(){
     }
     if (board.keepPlaying == false){
         if (board.gameEnd == 'Boom!'){
+            timeOnGameStop()
+            $('#tableBody').find('button').attr('disabled','disabled');
             console.log('U heeft op een mijn geklikt, u bent verloren!')
         } else {
             timeOnGameStop()
             $('#frm').validate()
-            console.log($('#frm').valid())
+            $('.submitBtn').css('display', 'inline')
             console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
         }
     }
@@ -59,17 +64,20 @@ function onRight(){
     var x = id.substr(0, n)
     var y = id.substr(n + 1)
     board.onRightClick(x,y)
+    $('#undiscoveredMines').html(board.undiscovered())
     $('#'+id).text(board.board[x][y].flagState[board.board[x][y].rightClick])
     if (board.keepPlaying == false){
-        if (board.gameEnd == 'Boom!'){
-            console.log('U heeft op een mijn geklikt, u bent verloren!')
-        } else {
+        // if (board.gameEnd == 'Boom!'){
+        //     timeOnGameStop()
+        //     $('#tableBody').find('button').attr('disabled','disabled');
+        //     console.log('U heeft op een mijn geklikt, u bent verloren!')
+        // } else {
             timeOnGameStop()
             $('#frm').validate()
-            console.log($('#frm').valid())
+            $('.submitBtn').css('display', 'inline')
             console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
-        }
     }
+    
         
 }
 
