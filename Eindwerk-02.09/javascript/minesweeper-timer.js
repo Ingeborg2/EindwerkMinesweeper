@@ -10,12 +10,11 @@ $(function() {
         clearInterval(stopTimer);
         resetTimer();
         stopTimer = setInterval(countTime, 1000);
-        saveGameConfigInLocalStorage();
     });
 
     $('#btn_restart').click(function() {
-        $('#game').css('display', 'block' );
-        $('#gameInterrupted').css('display', 'none' );
+        $('#game').css('display', 'block');
+        $('#gameInterrupted').css('display', 'none');
         $(this).hide();
         $('#btn_pause').show();
         stopTimer = setInterval(countTime, 1000);
@@ -23,15 +22,13 @@ $(function() {
         $('#btn_pause').show();
     });
 
-    $('#btn_pause').click(function(){
-        $('#gameInterrupted').css('display', 'block' );
-        $('#game').css('display', 'none' );
+    $('#btn_pause').click(function() {
+        $('#gameInterrupted').css('display', 'block');
+        $('#game').css('display', 'none');
         $(this).hide();
         $('#btn_restart').show()
         timeOnGameStop();
-    })
-
-    showGameConfigFromLocalStorage();
+    });
 }); // *****     end of onload function     ******
 
 function timeOnGameStop() {
@@ -41,28 +38,8 @@ function timeOnGameStop() {
     return counterStop;
 }
 
-function saveGameConfigInLocalStorage() {
-    var name = $('#naamSpeler').val();
-    var rows = parseInt($('#numberOfRows').val());
-    var cols = parseInt($('#numberOfCols').val());
-    var mines = parseInt($('#numberOfMines').val());
-    localStorage.setItem('gameConfig', JSON.stringify({ "name": name, "rows": rows, "cols": cols, "mines": mines }));
-}
-
-function showGameConfigFromLocalStorage() {
-    var gameConfig = JSON.parse(localStorage.getItem('gameConfig'));
-    if (gameConfig == null) {
-        gameConfig = {}
-    } else {
-        $('#naamSpeler').val(gameConfig.name)
-        parseInt($('#numberOfRows').val(gameConfig.rows));
-        parseInt($('#numberOfCols').val(gameConfig.cols));
-        parseInt($('#numberOfMines').val(gameConfig.mines));
-    }
-}
-
 function countTime() {
-    if (board.gameStart){
+    if (board.gameStart) {
         counter++;
         $('#clock').html(showCounterInMinutesAndSeconds(counter));
         $('#btn_pause').show();
