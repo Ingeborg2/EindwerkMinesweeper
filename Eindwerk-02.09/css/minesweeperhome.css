@@ -15,7 +15,7 @@
 
 
 #titel {
-    margin-top: 18%;
+    margin-top: 10%;
 }
 
 #mineBtn {
@@ -25,6 +25,7 @@
     border: 2px solid white;
     background : rgba(231,182,246,0.2);
     border-radius: 25px;
+    z-index: 2;
 }
 
 #mineBtn:hover {
@@ -38,6 +39,7 @@
     border: 2px solid white;
     background : rgba(231,182,246,0.2);
     border-radius: 25px;
+    z-index: 2;
 }
 
 #blackJackBtn:hover {
@@ -48,11 +50,11 @@
     height: 200px;
     opacity: 1;
     margin-right: 2px;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 #titelblackjack{
-    margin-top: -15px;
+    margin-top: -7px;
 }
 
 #bom{
@@ -60,7 +62,6 @@
     opacity: 1;
     margin-right: 20px;
 }
-
 
 
 @keyframes fa0 {
@@ -207,7 +208,7 @@
       position: absolute;
       background:gold;
       /* background: #a7a9ac; */
-      z-index: 1;
+      z-index: 0;
   }
 
 
