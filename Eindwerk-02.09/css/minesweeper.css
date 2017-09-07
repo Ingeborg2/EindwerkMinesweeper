@@ -1,16 +1,4 @@
 
-.container {
-  background-color: grey;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;}
-
-.container h3,.container h1 {
-  font-family: 'Roboto', sans-serif;
-  color: white;
-}
-
 .table{
   background-color: lightgrey;
 }
