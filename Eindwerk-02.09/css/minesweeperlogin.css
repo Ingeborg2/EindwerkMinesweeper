@@ -9,31 +9,33 @@ h1,h2,label{
 
   }
 
- .border{
-        border: 2px solid #a1a1a1;
-        padding: 10px 40px; 
-        background: #dddddd;
-        width: 300px;
-        border-radius: 25px;
- }
-
-  body,html{
-      height: 100%;
+body,html{
+    height: 100%;
   }
 
-  #titel {
-      margin-top: 18%;
+#titel {
+    border: 1px solid rgba(110, 31, 136, 0.50);
+    background: rgba(231, 182, 246, 0.50);
+    border-radius: 25px;
+    margin: auto;
+    padding: 5px;
+    width: 300px;
   }
 
-  #form{
+.topmargin{
+    margin-top: 18%;
+  }
+
+#form{
+      margin: auto;
       max-width: 200px;
   }
 
-  body{
+body{
     background-color: #000;
   }
 
-  @keyframes fa0 {
+@keyframes fa0 {
     0%   { opacity:1; }
     50%  { opacity:1; }
     51%  { opacity:0; }
