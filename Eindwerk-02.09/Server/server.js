@@ -19,7 +19,7 @@ app.all('/*', function (req, res, next) {
 app.get("/spelers", function (request, response) {
     var mongoClient = require('mongodb').MongoClient;
     var url = 'mongodb://localhost:27017/Minesweeper';
-    console.log(request.query.cols + "             Ò********")
+    console.log(request)
     mongoClient.connect(url, function (err, db) {
         var qryObj = {}
         if (request.query.name != undefined) {
