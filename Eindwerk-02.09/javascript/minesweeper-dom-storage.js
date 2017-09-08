@@ -9,7 +9,7 @@ $(function() {
     $('#signInBtn').click(function() {
         saveLoginInLocalStorage();
     });
-    showGameConfigFromLocalStorage();
+    // showGameConfigFromLocalStorage();
 
     // var gameConfig = JSON.parse(localStorage.getItem('gameConfig'));
     // console.log("login: " + loginName)
@@ -71,16 +71,16 @@ function saveLoginInLocalStorage() {
     localStorage.setItem('login', JSON.stringify({ "name": loginName }));
 }
 
-function showGameConfigFromLocalStorage() {
-    var gameConfig = JSON.parse(localStorage.getItem('gameConfig'));
-    var login = JSON.parse(localStorage.getItem('login'))
-    console.log("login " + login.name, "config: " + GameConfig.name)
-    if (gameConfig == null) {
-        gameConfig = [];
-    } else {
-        $('#naamSpeler').val(gameConfig.name)
-        parseInt($('#numberOfRows').val(gameConfig.rows));
-        parseInt($('#numberOfCols').val(gameConfig.cols));
-        parseInt($('#numberOfMines').val(gameConfig.mines));
-    }
-}
+// function showGameConfigFromLocalStorage() {
+//     var gameConfig = JSON.parse(localStorage.getItem('gameConfig'));
+//     var login = JSON.parse(localStorage.getItem('login'))
+//     console.log("login " + login.name, "config: " + GameConfig.name)
+//     if (gameConfig == null) {
+//         gameConfig = [];
+//     } else {
+//         $('#naamSpeler').val(gameConfig.name)
+//         parseInt($('#numberOfRows').val(gameConfig.rows));
+//         parseInt($('#numberOfCols').val(gameConfig.cols));
+//         parseInt($('#numberOfMines').val(gameConfig.mines));
+//     }
+// }

@@ -1,33 +1,32 @@
 @font-face {font-family:"LED";src:url("../fonts/LED/LED.eot?") format("eot"),url("../fonts/LED/LED.woff") format("woff"),url("../fonts/LED/LED.ttf") format("truetype"),url("../fonts/LED/LED.svg#LED") format("svg");font-weight:normal;font-style:normal;}
 .background {
     background-image: url('../images/backgroundweb.svg');
-    min-width: 100vw;
     min-height: 100vh;
+    width: 100vw;
     background-size: cover;
-  }
-  body,html{
-    
+    /*position: fixed;*/
+}
+
+body, html {
     height: 100%;
     margin: 0px;
 }
 
-h1,
-h3,
-label {
+h1,h3,label {
     color: white !important;
 }
 
-  .heading{
+.heading{
     color: yellow;
-  }
+}
 
-  #frm {
+#frm {
     margin: 150px 10px 20px 10px;
 }
 
 #planet {
-    margin-top: 170px;
-    margin-left: 25%;
+    margin-top: 50px;
+    margin-left: 45%;
     position: absolute;
     height: 150px;
     width: 160px;
@@ -56,7 +55,7 @@ label {
     display: none;
   }
 
-#btn {
+#btn_players {
   margin: 20px;
 }
 
@@ -74,13 +73,12 @@ label {
   }
 }
 
-.verschijn2{
-  opacity: 0;
-  animation: verschijn2 0.7s ease-in-out 0.5s forwards;
+#btn_startGame{
+    opacity: 0;
 }
 
-.verschijn2:hover {
-  box-shadow: 0 2px 15px rgba(231,182,246,0.3);
+.verschijn2{
+  animation: verschijn2 0.7s ease-in-out 1s forwards;
 }
 
 @keyframes verschijn2 {
