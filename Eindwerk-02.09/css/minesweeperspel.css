@@ -1,11 +1,12 @@
+@font-face {font-family:"LED";src:url("../fonts/LED/LED.eot?") format("eot"),url("../fonts/LED/LED.woff") format("woff"),url("../fonts/LED/LED.ttf") format("truetype"),url("../fonts/LED/LED.svg#LED") format("svg");font-weight:normal;font-style:normal;}
 .background {
     background-image: url('../images/backgroundweb.svg');
-    height: 100%;
-    width: 100%;
+    min-width: 100vw;
+    min-height: 100vh;
     background-size: cover;
-    position: fixed;
   }
   body,html{
+    
     height: 100%;
     margin: 0px;
   }
@@ -29,6 +30,12 @@
     height: 150px;
     width: 160px;
     animation: draaien 20s ease-in-out 5s infinite;
+  }
+
+  #clock{
+    font-family:'LED';
+    color: red;
+    font-size: 2rem;
   }
   
   @keyframes draaien {
