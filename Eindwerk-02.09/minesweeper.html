@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-<<<<<<< HEAD
     <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/minesweeperspel.css">
     <script src="jquery-3.2.1.min.js"></script>
@@ -18,25 +17,6 @@
         crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-=======
-    <script src="jquery-3.2.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="css/minesweeper.css">
-    <link rel="stylesheet" type="text/css" href="css/minesweeperspel.css">
-
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
-
-    <script src="jquery-3.2.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
->>>>>>> 11fcc95ba10457df90f10e0992f73d4fcf8b20ba
     <script src="javascript/minesweeper-controller.js"></script>
     <script src="javascript/minesweeper-model.js"></script>
     <script src="javascript/minesweeper-timer.js"></script>
@@ -219,7 +199,6 @@
                             </div>
                             <!-- container afsluiten -->
                     </div>
-<<<<<<< HEAD
                 </div>
                 <!-- Spelknoppen afsluiten -->
             </div>
@@ -297,85 +276,4 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 crossorigin="anonymous"></script>
 </body>
-=======
-                    <!-- backgorund afsluiten -->
-
-                    <script>
-                        ////////////////// POST EN GET OP SERVER ///////////////////////////////////
-                        $('#topspeler').hide()
-
-                        <<
-                        <<
-                        << < HEAD
-                        $('#btn').click(function() { ===
-                                    ===
-                                    =
-                                    $('#btn').click(function() {
-                                        $('#btn_startGame').addClass('verschijn2') >>>
-                                            >>>
-                                            > eafedf31a448dbc0f820be70174d88601a458f7a
-
-                                        var name = $('#naamSpeler').val();
-                                        var rows = parseInt($('#numberOfRows').val());
-                                        var cols = parseInt($('#numberOfCols').val());
-                                        var mines = parseInt($('#numberOfMines').val());
-                                        var querystring = "?"
-
-                                        $('#topspeler').addClass('tableopacity')
-                                        $('#hidebutton').removeClass('buttonhide')
-                                        $('#topspeler').show()
-                                        if ($('.listitem')) {
-                                            $('.listitem').remove()
-                                        }
-
-                                        if (name != "") {
-                                            querystring += 'name=' + name + '&'
-                                        }
-
-                                        if (rows != "" && cols != "" && mines != "") {
-                                            querystring += 'rows=' + rows + '&cols=' + cols + '&mines=' + mines
-                                        } else {
-                                            querystring.slice(0, querystring.length - 1)
-                                        }
-
-                                        if (querystring == "?") {
-                                            querystring = ""
-                                        }
-
-                                        $.ajax({
-                                            // publieke open dataset opvragen
-                                            url: "http://127.0.0.1:8081/spelers" + querystring,
-                                            dataType: "json", //parse returned JSON
-                                            crossDomain: true,
-                                            success: function(json) {
-                                                $.each(json, function(k, v) {
-                                                    $("#topspeler").append($('<tr>').attr('class', 'listitem').html("<td>" + v.name + "</td> <td>" + v.rows + "</td><td>" + v.cols + "</td><td>" + v.time + "</td><td>" + v.mines + "</td>"))
-                                                });
-                                            },
-
-                                            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                                                console.log("Status: " + textStatus);
-                                                console.log("Error: " + errorThrown);
-
-                                            }
-                                        })
-                                    })
-
-                                    $(document).ready(function() {
-                                        var height = Math.max(document.body.scrollHeight, document.body.offsetHeight,
-                                            document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
-                                        for (i = 0; i < 200; i++) {
-                                            var randClass = Math.floor(Math.random() * 10);
-                                            var randLeft = Math.floor(Math.random() * document.body.clientWidth);
-                                            var randTop = Math.floor(Math.random() * height);
-                                            $('body').append('<div class="star f' + randClass + '" style="top:' + randTop + 'px;left:' + randLeft + 'px;"></div>');
-
-                                        }
-                                    })
-                    </script>
-
-</body>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min/.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
->>>>>>> 11fcc95ba10457df90f10e0992f73d4fcf8b20ba
 </html>
