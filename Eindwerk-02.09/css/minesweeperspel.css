@@ -1,110 +1,44 @@
 .background {
     background-image: url('../images/backgroundweb.svg');
     height: 100%;
+    width: 100%;
     background-size: cover;
+    position: fixed;
   }
-  
-h1,h2,label{
+  body,html{
+    height: 100%;
+    margin: 0px;
+  }
+  h1,h3,label{
     color: white !important;
 
   }
 
-body,html{
-    height: 100%;
-  }
-#spaceman {
-  height: 100px;
-  width: 75px;
-  position: absolute;
-  opacity: 0;
-}
-
-#planet {
-  position: absolute;
-  height: 150px;
-  width: 160px;
-  animation: draaien 20s ease-in-out 5s infinite;
-}
-
-@keyframes draaien {
-  0%{
-    transform: rotate(0deg);
-  }
-  100%{
-    transform: rotate(360deg);
-  }
-}
-#titel {
-    border: 1px solid rgba(110, 31, 136, 0.50);
-    background: rgba(231, 182, 246, 0.50);
-    border-radius: 25px;
-    margin: auto;
-    padding: 5px;
-    width: 300px;
+  #frm {
+    margin: 150px 10px 20px 10px;
   }
 
-.topmargin{
-    margin-top: 18%;
+  #planet {
+    margin-top: 170px;
+    margin-left: 25%;
+    position: absolute;
+    height: 150px;
+    width: 160px;
+    animation: draaien 20s ease-in-out 5s infinite;
   }
-
-#form{
-      margin: auto;
-      max-width: 200px;
-  }
-
-.form-control{
-  z-index: 100;
-}
-
-body{
-    background-color: #000;
+  
+  @keyframes draaien {
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
   }
 
 
-.animation {
-  width: 100px;
-  opacity: 0;
-  animation: animate 2s ease-in-out forwards;
-}  
 
-#signInBtn{
-  z-index: 100;
-}
-
-@keyframes animate {
-  from{
-    width: 100px;
-    opacity: 0;
-  }
-  to{
-    width: 200px;
-    opacity: 1;
-  }
-}
-
-.animate2{
-  opacity: 0;
-  animation: animate2 2s ease-out 3s forwards;
-}
-.animate3{
-  opacity: 0;
-  animation: animate2 2s ease-out 2s forwards;
-}
-.animate4{
-  opacity: 0;
-  animation: animate2 2s ease-out 1s forwards;
-}
-
-@keyframes animate2{
-  from{
-    opacity: 0;
-  }
-  to{
-    opacity: 1;
-  }
-}
-
-@keyframes fa0 {
+  @keyframes fa0 {
     0%   { opacity:1; }
     50%  { opacity:1; }
     51%  { opacity:0; }
@@ -250,9 +184,5 @@ body{
       /* background: #a7a9ac; */
       z-index: 0;
   }
-
-
-
-
 
 
