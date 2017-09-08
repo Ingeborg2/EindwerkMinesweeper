@@ -73,7 +73,12 @@
 }
 
 .verschijn2{
-  animation: verschijn2 0.7s ease-in-out 1s forwards;
+  opacity: 0;
+  animation: verschijn2 0.7s ease-in-out 0.5s forwards;
+}
+
+.verschijn2:hover {
+  box-shadow: 0 2px 15px rgba(231,182,246,0.3);
 }
 
 @keyframes verschijn2 {
