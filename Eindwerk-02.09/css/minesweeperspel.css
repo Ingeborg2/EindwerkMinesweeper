@@ -55,7 +55,7 @@ h1,h3,label {
     display: none;
   }
 
-#btn {
+#btn_players {
   margin: 20px;
 }
 
@@ -71,6 +71,10 @@ h1,h3,label {
   to{
     opacity: 1;
   }
+}
+
+#btn_startGame{
+    opacity: 0;
 }
 
 .verschijn2{
