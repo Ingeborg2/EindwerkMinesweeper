@@ -9,11 +9,13 @@
     
     height: 100%;
     margin: 0px;
-  }
-  h1,h3,label{
-    color: white !important;
+}
 
-  }
+h1,
+h3,
+label {
+    color: white !important;
+}
 
   .heading{
     color: yellow;
@@ -21,11 +23,11 @@
 
   #frm {
     margin: 150px 10px 20px 10px;
-  }
+}
 
-  #planet {
-    margin-top: 50px;
-    margin-left: 45%;
+#planet {
+    margin-top: 170px;
+    margin-left: 25%;
     position: absolute;
     height: 150px;
     width: 160px;
@@ -182,70 +184,204 @@
   .f5 {
       animation: fa5 10s infinite;
     width: 1px;
-      height: 1px;
-  }
-  
-  @keyframes fa6 {
-    0%   { opacity:.2; }
-    50%  { opacity:.2; }
-    51%  { opacity:0; }
-    52%  { opacity:.2; }
-    100% { opacity:.2; }
-  }
-  
-  .f6 {
+    height: 1px;
+}
+
+@keyframes fa2 {
+    0% {
+        opacity: .8;
+    }
+    75% {
+        opacity: .8;
+    }
+    85% {
+        opacity: 0;
+    }
+    95% {
+        opacity: .8;
+    }
+    100% {
+        opacity: .8;
+    }
+}
+
+.f2 {
+    animation: fa2 5s infinite;
+    width: 2px;
+    height: 2px;
+}
+
+@keyframes fa3 {
+    0% {
+        opacity: .4;
+    }
+    11% {
+        opacity: .4;
+    }
+    32% {
+        opacity: 0;
+    }
+    53% {
+        opacity: .4;
+    }
+    100% {
+        opacity: .4;
+    }
+}
+
+.f3 {
+    animation: fa3 8s infinite;
+    width: 1px;
+    height: 1px;
+}
+
+@keyframes fa4 {
+    0% {
+        opacity: .2;
+    }
+    50% {
+        opacity: .2;
+    }
+    61% {
+        opacity: 0;
+    }
+    72% {
+        opacity: .2;
+    }
+    100% {
+        opacity: .2;
+    }
+}
+
+.f4 {
+    animation: fa4 10s infinite;
+    width: 3px;
+    height: 3px;
+}
+
+@keyframes fa5 {
+    0% {
+        opacity: .6;
+    }
+    20% {
+        opacity: .6;
+    }
+    51% {
+        opacity: 0;
+    }
+    82% {
+        opacity: .6;
+    }
+    100% {
+        opacity: .6;
+    }
+}
+
+.f5 {
+    animation: fa5 10s infinite;
+    width: 1px;
+    height: 1px;
+}
+
+@keyframes fa6 {
+    0% {
+        opacity: .2;
+    }
+    50% {
+        opacity: .2;
+    }
+    51% {
+        opacity: 0;
+    }
+    52% {
+        opacity: .2;
+    }
+    100% {
+        opacity: .2;
+    }
+}
+
+.f6 {
     animation: fa1 20s infinite;
     width: 2px;
-      height: 1px;
-  }
-  
-  @keyframes fa7 {
-    0%   { opacity:.5; }
-    50%  { opacity:.5; }
-    60%  { opacity:0; }
-    80%  { opacity:.5; }
-    100% { opacity:.5; }
-  }
-  
-  .f7 {
+    height: 1px;
+}
+
+@keyframes fa7 {
+    0% {
+        opacity: .5;
+    }
+    50% {
+        opacity: .5;
+    }
+    60% {
+        opacity: 0;
+    }
+    80% {
+        opacity: .5;
+    }
+    100% {
+        opacity: .5;
+    }
+}
+
+.f7 {
     animation: fa7 17s infinite;
     width: 1px;
-      height: 2px;
-  }
-  
-  @keyframes fa8 {
-    0%   { opacity:.9; }
-    20%  { opacity:.9; }
-    51%  { opacity:0; }
-    82%  { opacity:.9; }
-    100% { opacity:.9; }
-  }
-  
-  .f8 {
+    height: 2px;
+}
+
+@keyframes fa8 {
+    0% {
+        opacity: .9;
+    }
+    20% {
+        opacity: .9;
+    }
+    51% {
+        opacity: 0;
+    }
+    82% {
+        opacity: .9;
+    }
+    100% {
+        opacity: .9;
+    }
+}
+
+.f8 {
     animation: fa8 10s infinite;
     width: 2px;
-      height: 2px;
-  }
-  
-  @keyframes fa9 {
-    0%   { opacity:.1; }
-    70%  { opacity:.1; }
-    75%  { opacity:0; }
-    80%  { opacity:.1; }
-    100% { opacity:.1; }
-  }
-  
-  .f9 {
+    height: 2px;
+}
+
+@keyframes fa9 {
+    0% {
+        opacity: .1;
+    }
+    70% {
+        opacity: .1;
+    }
+    75% {
+        opacity: 0;
+    }
+    80% {
+        opacity: .1;
+    }
+    100% {
+        opacity: .1;
+    }
+}
+
+.f9 {
     animation: fa9 15s infinite;
     width: 2px;
-      height: 2px;
-  }
-  
-  .star {
-      position: absolute;
-      background:gold;
-      /* background: #a7a9ac; */
-      z-index: 0;
-  }
+    height: 2px;
+}
 
-
+.star {
+    position: absolute;
+    background: gold;
+    /* background: #a7a9ac; */
+    z-index: 0;
+}
