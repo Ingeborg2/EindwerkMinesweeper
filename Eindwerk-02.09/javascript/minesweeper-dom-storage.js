@@ -1,26 +1,41 @@
 "use strict";
+var loginName;
 
 $(function() {
     $('#btn_startGame').click(function() {
         saveGameConfigInLocalStorage();
     });
+    location.search.split("=").pop()
 
-    $('#signInFrm').click(function() {
+    $('#signInBtn').click(function() {
         saveLoginInSessionStorage();
+        console.log("loginName: " + loginName);
+        console.log($('#userName').val());
+        //var login = location.search.split("=").pop();
     });
-    var login = $('#userName').val();
-    var config = $('#naamSpeler').val();
-    if (login == config) {
+    var gameConfig = JSON.parse(localStorage.getItem('gameConfig'));
+    console.log("login: " + loginName)
+    console.log("config: " + gameConfig.name)
+    if (gameConfig == null) {
+        gameConfig = {}
+    } else {
         showGameConfigFromLocalStorage();
-    }
-}); // *****     end of onload function     ******
+
+        //showGameConfigFromLocalStorage();
+    };
+});
+// *****     end of onload function     ******
+
 
 // ***** SESSION STORAGE ***** //
 
+//function saveLoginInSessionStorage(elem) {
 function saveLoginInSessionStorage() {
-    var loginName = $('#userName').val();
+    //console.log(elem);
+    loginName = $('#userName').val();
     var loginEmail = $('#userMail').val();
     sessionStorage.setItem('login', JSON.stringify({ "name": loginName, "email": loginEmail }));
+    //location.href = elem.href + "?name=" + sessionStorage.getItem("login.name");
 }
 
 // ***** LOCAL STORAGE ***** //
