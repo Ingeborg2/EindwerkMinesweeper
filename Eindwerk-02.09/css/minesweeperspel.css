@@ -1,0 +1,15 @@
+.background {
+    background-image: url('../images/backgroundweb.svg');
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    position: fixed;
+  }
+  body,html{
+    height: 100%;
+    margin: 0px;
+  }
+  h1,h3{
+    color: white !important;
+
+  }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/minesweeper.css">
+    <link rel="stylesheet" type="text/css" href="css/minesweeperspel.css">
     <script src="jquery-3.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
@@ -14,37 +14,32 @@
     <script src="javascript/minesweeper-model.js"></script>
     <script src="javascript/minesweeper-timer.js"></script>
     <script src="javascript/minesweeper-dom-storage.js"></script>
-
-    </style>
-
     <title>Minesweeper</title>
 </head>
-
 <body>
-    <div class="container">
-        <header>
-            <h3>Home for all your entertainment</h3>
-            <h1>Minesweeper Game</h1>
-        </header>
-    </div>
-
+    <div class="background">
+    <div class="container text-center">
     <!-- //////////////////////////////////////////FORM////////////////////////////////////////////////-->
-
-    <form method="POST" action="http://127.0.0.1:8081/spelers" id="frm">
-
-        <br>
-        <br>
+    <form method="POST" action="http://127.0.0.1:8081/spelers" id="frm" class="form-inline">
+        <div class="form-group">
         <label for="naamSpeler">Naam speler: </label>
-        <input type="text" name="name" id="naamSpeler" minlength=1 required/>
-        <br>
-        <br>
+        <input type="text" name="name" id="naamSpeler" minlength=1 required class="form-control"/>
+        </div>
+        <div class="form-group">
         <label for="numberOfCols">Aantal kolommen: </label>
-        <input type="number" name="cols" id="numberOfCols" required/>
+        <input type="number" name="cols" id="numberOfCols" required class="form-control"/>
+        </div>
+        <div class="form-group">
         <label for="numberOfRows">Aantal rijen: </label>
-        <input type="number" name="rows" id="numberOfRows" required/>
+        <input type="number" name="rows" id="numberOfRows" required class="form-control"/>
+        </div>
+        <div class="form-group">
         <label for="numberOfMines">Aantal mijnen:</label>
-        <input type="number" name="mines" id="numberOfMines" required/>
-        <input type="hidden" name="time" id="time" value=0>
+        <input type="number" name="mines" id="numberOfMines" required class="form-control"/>
+        </div>
+        <div class="form-group">
+        <input type="hidden" name="time" id="time" value=0 class="form-control">
+        </div>
         <input type="button" id="btn_startGame" value='START SPEL'>
         <input type="submit" id="btn2" value="Submit score" onclick="timeOnGameStop()" class="submitBtn">
     </form>
@@ -79,6 +74,8 @@
     </table>
     <div>
         <input type="button" id="btn" value="topspelers">
+    </div>
+    </div>
     </div>
 
     <script>
@@ -131,6 +128,6 @@
             })
         })
     </script>
+    
 </body>
-
 </html>

@@ -15,7 +15,24 @@
 
 
 #titel {
-    margin-top: 18%;
+    margin-top: 10%;
+}
+
+#planet {
+  margin-top: 500px;
+  position: absolute;
+  height: 150px;
+  width: 160px;
+  animation: draaien 20s ease-in-out 0s infinite;
+}
+
+@keyframes draaien {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }
 
 #mineBtn {
@@ -25,6 +42,7 @@
     border: 2px solid white;
     background : rgba(231,182,246,0.2);
     border-radius: 25px;
+    z-index: 2;
 }
 
 #mineBtn:hover {
@@ -38,6 +56,7 @@
     border: 2px solid white;
     background : rgba(231,182,246,0.2);
     border-radius: 25px;
+    z-index: 2;
 }
 
 #blackJackBtn:hover {
@@ -48,11 +67,11 @@
     height: 200px;
     opacity: 1;
     margin-right: 2px;
-    margin-top: 40px;
+    margin-top: 12px;
 }
 
 #titelblackjack{
-    margin-top: -15px;
+    margin-top: 7px;
 }
 
 #bom{
@@ -120,7 +139,6 @@
   opacity: 0;
 }
 /* ******************* */
-
 
 @keyframes fa0 {
     0%   { opacity:1; }
@@ -266,7 +284,7 @@
       position: absolute;
       background:gold;
       /* background: #a7a9ac; */
-      z-index: 1;
+      z-index: 0;
   }
 
 
