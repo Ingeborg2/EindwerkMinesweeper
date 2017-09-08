@@ -10,20 +10,23 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
+        crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-    crossorigin="anonymous">
+        crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/minesweeperlogin.css">
-    
+
     <script src="javascript/minesweeper-timer.js"></script>
     <script src="javascript/minesweeper-dom-storage.js"></script>
 
     <title>Document</title>
     <script>
-        $(document).ready(function() {
-            $('#signInBtn').click(function() {
+        $(document).mousemove(function (e) {
+            $("#spaceman").css({ left: e.pageX+150, top: e.pageY+150 },"fast");
+        });
+        $(document).ready(function () {
+            $('#signInBtn').click(function () {
                 $('#signInFrm').validate()
                 if ($('#signInFrm').valid()) {
                     window.location.href = "home.html";
@@ -62,28 +65,35 @@
                     <h1 id="titel">The Game Station</h1>
                 </div>
             </div>
+            <div class="astronaut">
+                <img src="images/spaceman.png" id="spaceman">
+            </div>
+            <div class="planet">
+                <img src="images/planet.png" id="planet">
+            </div>
             <div class="row">
                 <div id="form">
-                <h2>Login</h2>
-                <form id="signInFrm">
-                    <div class="form-group">
-                        <label for="userName">Username: </label>
-                        <input type="text" name="userName" id="userName" required class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="userMail">Usermail: </label>
-                        <input type="email" name="userMail" id="userMail" required class="form-control">
-                    </div>
-                    <input type="button" id="signInBtn" value="Sign in!" class="btn btn-danger">
-                </form>
+                    <h2>Login</h2>
+                    <form id="signInFrm">
+                        <div class="form-group">
+                            <label for="userName">Username: </label>
+                            <input type="text" name="userName" id="userName" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="userMail">Usermail: </label>
+                            <input type="email" name="userMail" id="userMail" required class="form-control">
+                        </div>
+                        <input type="button" id="signInBtn" value="Sign in!" class="btn btn-danger">
+                    </form>
                 </div>
             </div>
-            
-            
+
+
         </div>
     </div>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
