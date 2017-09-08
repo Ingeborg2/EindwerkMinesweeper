@@ -3,77 +3,125 @@
     height: 100%;
     background-size: cover;
   }
-  
-h1,h2,label{
+
+  h1,h2,h3,label{
     color: white !important;
 
   }
 
-body,html{
+  body,html{
     height: 100%;
-  }
+}
+
 
 #titel {
-    border: 1px solid rgba(110, 31, 136, 0.50);
-    background: rgba(231, 182, 246, 0.50);
+    margin-top: 10%;
+}
+
+#mineBtn {
+    margin: 50px;
+    height: 300px;
+    width: 250px;
+    border: 2px solid white;
+    background : rgba(231,182,246,0.2);
     border-radius: 25px;
-    margin: auto;
-    padding: 5px;
-    width: 300px;
+    z-index: 2;
+}
+
+#mineBtn:hover {
+    box-shadow: 0 5px 25px rgba(231,182,246,0.3);
   }
 
-.topmargin{
-    margin-top: 18%;
+#blackJackBtn{
+    margin: 50px;
+    height: 300px;
+    width: 250px;
+    border: 2px solid white;
+    background : rgba(231,182,246,0.2);
+    border-radius: 25px;
+    z-index: 2;
+}
+
+#blackJackBtn:hover {
+    box-shadow: 0 5px 25px rgba(243, 239, 244, 0.30);
   }
 
-#form{
-      margin: auto;
-      max-width: 200px;
-  }
-
-body{
-    background-color: #000;
-  }
-
-
-.animation {
-  width: 100px;
-  opacity: 0;
-  animation: animate 2s ease-in-out forwards;
-}  
-
-@keyframes animate {
-  from{
-    width: 100px;
-    opacity: 0;
-  }
-  to{
-    width: 200px;
+#blackjack{
+    height: 200px;
     opacity: 1;
-  }
+    margin-right: 2px;
+    margin-top: 20px;
 }
 
-.animate2{
-  opacity: 0;
-  animation: animate2 2s ease-out 3s forwards;
-}
-.animate3{
-  opacity: 0;
-  animation: animate2 2s ease-out 2s forwards;
-}
-.animate4{
-  opacity: 0;
-  animation: animate2 2s ease-out 1s forwards;
+#titelblackjack{
+    margin-top: -7px;
 }
 
-@keyframes animate2{
-  from{
-    opacity: 0;
-  }
-  to{
+#bom{
+    height: 200px;
     opacity: 1;
-  }
+    margin-right: 20px;
 }
+
+/* button special effect */
+
+.icon {
+  position: relative;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  
+  margin: 25px 0 25px 25px;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+  font-size: 12px;
+  font-family: sans-serif;
+}
+/**
+ * The "shine" element
+ */
+
+ .icon:after {
+  content: "";
+  position: absolute;
+  top: -110%;
+  left: -210%;
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+  transform: rotate(30deg);
+  
+  background: rgba(255, 255, 255, 0.13);
+  background: linear-gradient(
+    to right, 
+    rgba(255, 255, 255, 0.13) 0%,
+    rgba(255, 255, 255, 0.13) 77%,
+    rgba(255, 255, 255, 0.5) 92%,
+    rgba(255, 255, 255, 0.0) 100%
+  );
+}
+
+/* Hover state - trigger effect */
+
+.icon:hover:after {
+  opacity: 1;
+  top: -30%;
+  left: -30%;
+  transition-property: left, top, opacity;
+  transition-duration: 0.7s, 0.7s, 0.15s;
+  transition-timing-function: ease;
+}
+
+/* Active state */
+
+.icon:active:after {
+  opacity: 0;
+}
+/* ******************* */
 
 @keyframes fa0 {
     0%   { opacity:1; }
@@ -219,11 +267,7 @@ body{
       position: absolute;
       background:gold;
       /* background: #a7a9ac; */
-      z-index: 1;
+      z-index: 0;
   }
-
-
-
-
 
 
