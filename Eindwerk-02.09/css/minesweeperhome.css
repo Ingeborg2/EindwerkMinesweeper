@@ -18,6 +18,23 @@
     margin-top: 10%;
 }
 
+#planet {
+  margin-top: 500px;
+  position: absolute;
+  height: 150px;
+  width: 160px;
+  animation: draaien 20s ease-in-out 0s infinite;
+}
+
+@keyframes draaien {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
 #mineBtn {
     margin: 50px;
     height: 300px;
@@ -50,11 +67,11 @@
     height: 200px;
     opacity: 1;
     margin-right: 2px;
-    margin-top: 20px;
+    margin-top: 12px;
 }
 
 #titelblackjack{
-    margin-top: -7px;
+    margin-top: 7px;
 }
 
 #bom{

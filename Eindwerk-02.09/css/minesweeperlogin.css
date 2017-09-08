@@ -16,13 +16,14 @@ body,html{
   height: 100px;
   width: 75px;
   position: absolute;
+  opacity: 0;
 }
 
 #planet {
   position: absolute;
   height: 150px;
-  width: 170px;
-  animation: draaien 20s ease-in-out 10s forwards;
+  width: 160px;
+  animation: draaien 20s ease-in-out 5s infinite;
 }
 
 @keyframes draaien {
