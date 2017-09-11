@@ -1,30 +1,53 @@
 'use strict';
-$(document).ready(function () {
-    clickfunctie()
 
+var counter = 0;
+var counterStop = 0;
+var stopTimer;
+var board1;
+var board;
+
+
+$(document).ready(function () {
+    /////////sterren////////////////
     var height = Math.max(document.body.scrollHeight, document.body.offsetHeight,
         document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
     for (var i = 0; i < 200; i++) {
         var randClass = Math.floor(Math.random() * 10);
         var randLeft = Math.floor(Math.random() * document.body.clientWidth);
         var randTop = Math.floor(Math.random() * height);
-        $('body').append('<div class="star f' + randClass + '" style="top:' + randTop + 'px;left:' + randLeft + 'px;"></div>');
-
+        $('.background').append('<div class="star f' + randClass + '" style=" z-index: 0 ; top:' + randTop + 'px;left:' + randLeft + 'px;"></div>');
     }
+    $('#btn_startGame').addClass('verschijn2')
+    //////////LOCAL STORAGE////////////
+    var form = $("#frm");
+    $('#btn_startGame').click(function () {
+        if (form.valid()) {
+            saveGameConfigInLocalStorage();
+        }
+    });
 
+    $('#naamSpeler').change(function () {
+        getInfoNotLoggedInPlayer();
+    });
+
+    showGameConfigFromLocalStorage();
+    clickfunctie();
+
+    ////////////////MINESWEEPER GENERATE/////////////////
     $('#btn_startGame').click(function () {
         vulTabel();
         $('#undiscoveredMines').html(board.undiscovered())
-    })
-    $('#tableBody').bind('contextmenu', function (e) { return false })
-
-    $('#btn_startGame').click(function () {
+        $('.clockMines').css('display' , 'block');
+        $('.formbutton').hide();
+        $('.topplayers').hide();
         clearInterval(stopTimer);
         resetTimer();
         stopTimer = setInterval(countTime, 1000);
-    });
+    })
+    $('#tableBody').bind('contextmenu', function (e) { return false })
 
     $('#btn_restart').click(function () {
+
         $('#game').css('display', 'block');
         $('#gameInterrupted').css('display', 'none');
         $(this).hide();
@@ -41,9 +64,140 @@ $(document).ready(function () {
         $('#btn_restart').show()
         timeOnGameStop();
     });
-})
-var board;
+})///////////////END OF WINDOW ONLOAD/////////////////
 
+//////////////FUNCTIONS LOCAL STORAGE/////////////
+function saveGameConfigInLocalStorage() {
+    var name = $('#naamSpeler').val();
+    var cols = parseInt($('#numberOfCols').val());
+    var rows = parseInt($('#numberOfRows').val());
+    var mines = parseInt($('#numberOfMines').val());
+    var gameConfig = JSON.parse(localStorage.getItem('gameConfig'));
+    if (gameConfig == null) {
+        gameConfig = [];
+    }
+    var spelerObj = {
+        name: name,
+        rows: rows,
+        cols: cols,
+        mines: mines
+    }
+    var gevonden = false;
+    for (var i = 0; i < gameConfig.length && gevonden == false; i++) {
+        if (gameConfig[i].name == name) {
+            gevonden = true;
+            gameConfig[i].rows = rows;
+            gameConfig[i].cols = cols;
+            gameConfig[i].mines = mines;
+        }
+    }
+    if (gevonden == false) {
+        gameConfig.push(spelerObj);
+    }
+    //console.log(gameConfig);
+    localStorage.setItem('gameConfig', JSON.stringify(gameConfig));
+}
+
+function showGameConfigFromLocalStorage() {
+    var gameConfig = JSON.parse(localStorage.getItem('gameConfig'));
+    var login = JSON.parse(localStorage.getItem('login'));
+    if (gameConfig == null) {
+        gameConfig = [];
+    } else {
+        for (var i = 0; i < gameConfig.length; i++) {
+            if (login.name == gameConfig[i].name) {
+                $('#naamSpeler').val(gameConfig[i].name);
+                parseInt($('#numberOfRows').val(gameConfig[i].rows));
+                parseInt($('#numberOfCols').val(gameConfig[i].cols));
+                parseInt($('#numberOfMines').val(gameConfig[i].mines));
+            }
+        }
+    }
+}
+
+function getInfoNotLoggedInPlayer() {
+    var prefilled = false;
+    var naam = $('#naamSpeler').val();
+    var gameConfig = JSON.parse(localStorage.getItem('gameConfig'));
+    for (var i = 0; i < gameConfig.length; i++) {
+        if (naam == gameConfig[i].name) {
+            prefilled = true;
+            //alert("test geslaagd");
+            parseInt($('#numberOfRows').val(gameConfig[i].rows));
+            parseInt($('#numberOfCols').val(gameConfig[i].cols));
+            parseInt($('#numberOfMines').val(gameConfig[i].mines));
+        }
+    }
+    if (!prefilled) {
+        parseInt($('#numberOfRows').val(0));
+        parseInt($('#numberOfCols').val(0));
+        parseInt($('#numberOfMines').val(0));
+    }
+};
+
+function clickfunctie() {
+    $('#btn_players').click(function () {
+
+        var name = $('#naamSpeler').val();
+        var rows = parseInt($('#numberOfRows').val());
+        var cols = parseInt($('#numberOfCols').val());
+        var mines = parseInt($('#numberOfMines').val());
+        var querystring = "?"
+
+        $('#topspeler').addClass('tableopacity')
+        $('#hidebutton').removeClass('buttonhide')
+        $('#topspeler').show()
+        if ($('.listitem')) {
+            $('.listitem').remove()
+        }
+
+        if (name != "") {
+            querystring += 'name=' + name + '&'
+        }
+
+        if (rows != "" && cols != "" && mines != "") {
+            querystring += 'rows=' + rows + '&cols=' + cols + '&mines=' + mines
+        } else {
+            querystring.slice(0, querystring.length - 1)
+        }
+
+        if (querystring == "?") {
+            querystring = ""
+        }
+
+        $.ajax({
+            // publieke open dataset opvragen
+            url: "http://127.0.0.1:8081/spelers" + querystring,
+            dataType: "json", //parse returned JSON
+            crossDomain: true,
+            success: function (json) {
+                $.each(json, function (k, v) {
+                    $("#topspeler").append($('<tr>').attr('class', 'listitem').html("<td>" + v.name + "</td> <td>" + v.rows + "</td><td>" + v.cols + "</td><td>" + v.time + "</td><td>" + v.mines + "</td>"))
+                });
+            },
+
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log("Status: " + textStatus);
+                console.log("Error: " + errorThrown);
+
+            }
+        })
+    })
+
+    $('#btn2').click(function () {
+        var name = $('#naamSpeler').val();
+        var rows = parseInt($('#numberOfRows').val());
+        var cols = parseInt($('#numberOfCols').val());
+        var mines = parseInt($('#numberOfMines').val());
+        var time = counterStop;
+        var gegevens = { name: name, rows: rows, cols: cols, mines: mines, time: time }
+
+        $.post("http://127.0.0.1:8081/spelers", gegevens,
+            function (data, status) {
+                alert("Data: " + data.message + "\nStatus: " + data.status);
+            });
+    });
+}
 
 function vulTabel() {
     var cols = +$('#numberOfCols').val()
@@ -155,100 +309,7 @@ function getFieldVal(e) {
     //     }
     // }
 }
-
-
-function clickfunctie() {
-    $('#btn_players').click(function () {
-        $('#btn_startGame').addClass('verschijn2')
-
-        var name = $('#naamSpeler').val();
-        var rows = parseInt($('#numberOfRows').val());
-        var cols = parseInt($('#numberOfCols').val());
-        var mines = parseInt($('#numberOfMines').val());
-        var querystring = "?"
-
-        $('#topspeler').addClass('tableopacity')
-        $('#hidebutton').removeClass('buttonhide')
-        $('#topspeler').show()
-        if ($('.listitem')) {
-            $('.listitem').remove()
-        }
-
-        if (name != "") {
-            querystring += 'name=' + name + '&'
-        }
-
-        if (rows != "" && cols != "" && mines != "") {
-            querystring += 'rows=' + rows + '&cols=' + cols + '&mines=' + mines
-        } else {
-            querystring.slice(0, querystring.length - 1)
-        }
-
-        if (querystring == "?") {
-            querystring = ""
-        }
-
-        $.ajax({
-            // publieke open dataset opvragen
-            url: "http://127.0.0.1:8081/spelers" + querystring,
-            dataType: "json", //parse returned JSON
-            crossDomain: true,
-            success: function (json) {
-                $.each(json, function (k, v) {
-                    $("#topspeler").append($('<tr>').attr('class', 'listitem').html("<td>" + v.name + "</td> <td>" + v.rows + "</td><td>" + v.cols + "</td><td>" + v.time + "</td><td>" + v.mines + "</td>"))
-                });
-            },
-
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log("Status: " + textStatus);
-                console.log("Error: " + errorThrown);
-
-            }
-        })
-    })
-
-    $('btn2').click(function () {
-        $.post('http://127.0.0.1:8081/spelers', event, function (data, status) {
-            alert('Data: ' + data.message + '/nStatus : ' + data.status)
-        })
-    })
-}
-
-
-
-"use strict";
-var counter = 0;
-var counterStop = 0;
-var stopTimer;
-var board1;
-
-
-// $(function() {
-//     $('#btn_startGame').click(function() {
-//         clearInterval(stopTimer);
-//         resetTimer();
-//         stopTimer = setInterval(countTime, 1000);
-//     });
-
-//     $('#btn_restart').click(function() {
-//         $('#game').css('display', 'block');
-//         $('#gameInterrupted').css('display', 'none');
-//         $(this).hide();
-//         $('#btn_pause').show();
-//         stopTimer = setInterval(countTime, 1000);f
-//         $('#btn_restart').hide();
-//         $('#btn_pause').show();
-//     });
-
-//     $('#btn_pause').click(function() {
-//         $('#gameInterrupted').css('display', 'block');
-//         $('#game').css('display', 'none');
-//         $(this).hide();
-//         $('#btn_restart').show()
-//         timeOnGameStop();
-//     });
-// }); // *****     end of onload function     ******
-
+////////////TIMER/////////////
 function timeOnGameStop() {
     clearInterval(stopTimer);
     counterStop = counter;
@@ -273,4 +334,3 @@ function showCounterInMinutesAndSeconds(counter) {
     var seconds = counter - minutes * 60;
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 }
-

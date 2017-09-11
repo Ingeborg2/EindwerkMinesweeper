@@ -4,7 +4,8 @@
     min-height: 100vh;
     width: 100vw;
     background-size: cover;
-    /*position: fixed;*/
+    position: relative;
+    z-index: 0
 }
 
 body, html {
@@ -36,7 +37,7 @@ h1,h3,label {
   #clock{
     font-family:'LED';
     color: red;
-    font-size: 2rem;
+    font-size: 4rem;
   }
   
   @keyframes draaien {
@@ -55,6 +56,10 @@ h1,h3,label {
     display: none;
   }
 
+  #btn_restart,#btn_pause{
+      display:none;
+  }
+
 #btn_players {
   margin: 20px;
 }
@@ -71,24 +76,6 @@ h1,h3,label {
   to{
     opacity: 1;
   }
-}
-
-#btn_startGame{
-    opacity: 0;
-}
-
-.verschijn2{
-  animation: verschijn2 0.7s ease-in-out 1s forwards;
-}
-
-@keyframes verschijn2 {
-  from{
-    opacity: 0;
-  }
-  to{
-    opacity: 1;
-  }
-  
 }
 
 
@@ -381,5 +368,61 @@ h1,h3,label {
     position: absolute;
     background: gold;
     /* background: #a7a9ac; */
-    z-index: 0;
+    /* z-index: 0; */
+}
+
+
+#btn_startGame{
+    opacity: 0;
+    z-index: 100;
+    margin-top: 10px;
+}
+
+.verschijn2{
+  animation: verschijn2 0.7s ease-in-out 1s forwards;
+}
+
+@keyframes verschijn2 {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+  
+}
+
+#pauseimage{
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+
+.clockMines{
+    margin-top: 100px;
+}
+
+.knoppendiv{
+    margin-top: 20px;
+}
+.atagBox{
+    border-radius: 10px;
+    border: 1px solid white;
+    width: 200px;
+    margin-bottom: 10px;
+}
+.atag{
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    padding: 5 auto;
+
+   
+}
+
+.atag:hover{
+    color: red;
+    font-size: 2rem;
+   text-decoration: none;
 }

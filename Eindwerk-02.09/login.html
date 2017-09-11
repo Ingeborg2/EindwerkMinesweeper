@@ -5,58 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script> -->
     <script src="jquery-3.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="javascript/logincontroller.js"></script>
     <link rel="stylesheet" type="text/css" href="css/minesweeperlogin.css">
-
-    <script src="javascript/minesweeper-timer.js"></script>
-    <script src="javascript/minesweeper-dom-storage.js"></script>
-
+    
     <title>Document</title>
-    <script>
-        $(document).mousemove(function(e) {
-            $("#spaceman").css({
-                opacity: 1,
-                left: e.pageX + 70,
-                top: e.pageY + 70
-            }, "fast");
-
-        });
-        $(document).ready(function() {
-            $('#signInBtn').click(function() {
-                $('#signInFrm').validate()
-                if ($('#signInFrm').valid()) {
-                    window.location.href = "home.html";
-                }
-            });
-
-            var height = Math.max(document.body.scrollHeight, document.body.offsetHeight,
-                document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
-            for (i = 0; i < 200; i++) {
-                var randClass = Math.floor(Math.random() * 10);
-                var randLeft = Math.floor(Math.random() * document.body.clientWidth);
-                var randTop = Math.floor(Math.random() * height);
-                $('body').append('<div class="star f' + randClass + '" style="top:' + randTop + 'px;left:' + randLeft + 'px;"></div>');
-
-            }
-            $('#signInBtn').click(function() {
-                $('#signInFrm').validate()
-                if ($('#signInFrm').valid()) {
-                    window.location.href = "home.html";
-                }
-            })
-
-            $('.form-control').addClass('animation')
-            $('#signInBtn').addClass('animate2')
-            $('h2').addClass('animate3')
-            $('label').addClass('animate4')
-        })
-    </script>
 </head>
 
 <body>
@@ -89,11 +46,10 @@
                     </form>
                 </div>
             </div>
-
-
+            
+            
         </div>
     </div>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 

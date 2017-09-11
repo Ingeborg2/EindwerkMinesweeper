@@ -61,6 +61,7 @@ app.post("/spelers", function (request, response) {
         collection.insertOne(event, function (err, r) {
             if (!err) {
                 console.log("Gelukt")
+                response.end(JSON.stringify({ message: "gelukt", status: "200" }))
             }
             else {
                 console.log(err)

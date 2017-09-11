@@ -12,11 +12,36 @@ h1,h2,label{
 body,html{
     height: 100%;
   }
-#spaceman {
+/* #spaceman {
   height: 100px;
   width: 75px;
   position: absolute;
   opacity: 0;
+} */
+
+#spaceman {
+	width: 75px;
+	height: 100px;
+  position:fixed;
+}
+
+.rotated {
+  position: absolute;
+  height: 100px;
+  width: 75px;
+  animation: draaien2 10s infinite;
+}
+
+@keyframes draaien2 {
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(360deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }
 
 #planet {
