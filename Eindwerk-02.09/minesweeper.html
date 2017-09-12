@@ -30,6 +30,9 @@
         <div class="planet">
             <img src="images/planet.png" id="planet">
         </div>
+        <div class="spaceshipdiv">
+                <img src="images/spaceship.png" id="spaceship">
+            </div>
         <!-- planet afsluiten -->
         <!-- /////////// pagina inhoud ///////// -->
         <div class="wrapperdiv">
@@ -119,19 +122,19 @@
                 <!-- ////////////// Spelknoppen ///////////// -->
                 <div class="row">
                     <div class="knoppendiv">
-                        <div class="col-md-2 col-md-offset-2 atagBox">
+                        <div class="col-md-2 col-md-offset-2 atagBox1">
                     <!-- <input type="button" id="reconfig" value="RECONFIGURATE" class="btn btn-warning"> -->
-                            <a href="#" class="atag">RECONFIGURATE</a>
+                            <input type="button" class="atag" id="reconfig" value="RECONFIG">
                         </div>
-                        <div class="col-md-4">
-                    <input type="button" id="btn_pause" value="PAUSE" class="btn btn-danger" hidden>
-                    <input type="button" id="btn_restart" value="CONTINUE" class="btn btn-danger" hidden>
+                        <div class="col-md-4 middleBtns" >
+                            <input type="button" id="btn_pause" value="PAUSE" class="btn btn-danger" hidden>
+                            <input type="button" id="btn_restart" value="CONTINUE" class="btn btn-danger" hidden>
                     <!-- <div class="buttonhide1"> -->
-                    <input type="submit" id="btn2" value="SUBMIT SCORE" onclick="timeOnGameStop()" class="submitBtn btn btn-danger">
+                            <input type="submit" id="btn2" value="SUBMIT SCORE" onclick="timeOnGameStop()" class="submitBtn btn btn-danger">
                         </div>
-                        <div class="col-md-2 atagBox">
+                        <div class="col-md-2 atagBox2">
                     <!-- <input type="button" id="newgame" value="NEW GAME" class="btn btn-warning"> -->
-                            <a href="#" class="atag">NEW GAME</a>
+                            <input type="button" class="atag" value="NEW GAME" id="newGame">
                         </div>
                     </div>
                 </div>

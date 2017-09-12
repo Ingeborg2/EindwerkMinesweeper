@@ -406,7 +406,14 @@ h1,h3,label {
 .knoppendiv{
     margin-top: 20px;
 }
-.atagBox{
+.atagBox1{
+    border-radius: 10px;
+    border: 1px solid white;
+    width: 200px;
+    margin-bottom: 10px;
+    visibility: hidden;
+}
+.atagBox2{
     border-radius: 10px;
     border: 1px solid white;
     width: 200px;
@@ -418,14 +425,39 @@ h1,h3,label {
     font-size: 2rem;
     text-align: center;
     padding: 5 auto;
+    background-color: transparent;
+    border: 0 solid transparent;
 
    
 }
+#spaceship {
+    height: auto;
+    width: 3%;
+    position: absolute;
+    transform: rotate(-45deg);
+    right: -150px;
+    top: 500px;
+  }
+
+.spaceship {
+    animation: vliegen 10s ease-in-out 10s forwards;
+  }
+  
+  @keyframes vliegen {
+    0% {
+      right: -150px;
+      top: 500px;
+    }
+    100%{
+      right: 500px;
+      top: -300px;
+    }
+  }
 
 .atag:hover{
     color: red;
     font-size: 2rem;
-   text-decoration: none;
+    text-decoration: none;
 }
 
 .pauseanimate{

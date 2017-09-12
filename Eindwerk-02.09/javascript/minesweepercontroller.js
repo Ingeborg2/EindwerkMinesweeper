@@ -37,9 +37,12 @@ $(document).ready(function () {
             $('.clockMines').css('display' , 'block');
             $('.formbutton').hide();
             $('.topplayers').hide();
-            $('.atagBox').css('visibility', 'visible');
+            $('#game').show();
+            $('.knoppendiv').show();
+            $('.atagBox1').css('visibility', 'visible');
+            $('.atagBox2').css('visibility', 'visible');
             clearInterval(stopTimer);
-            resetTimer();
+            resetTimer();   
             stopTimer = setInterval(countTime, 1000);
         }
     })
@@ -81,6 +84,35 @@ $(document).ready(function () {
             }
         } 
     });
+
+    $('#reconfig').click(function(){
+        $('#game').css('display', 'none');
+        $('.formbutton').show();
+        $('.topplayers').show();
+        $('.clockMines').hide();
+        $('.knoppendiv').hide();
+    })
+
+    $('#newGame').click(function(){
+        if (form.valid()) {
+            saveGameConfigInLocalStorage();
+            vulTabel();
+            $('#undiscoveredMines').html(board.undiscovered())
+            $('.clockMines').css('display' , 'block');
+            $('.formbutton').hide();
+            $('.topplayers').hide();
+            $('#game').show();
+            $('.knoppendiv').show();
+            $('.atagBox1').css('visibility', 'visible');
+            $('.atagBox2').css('visibility', 'visible');
+            clearInterval(stopTimer);
+            resetTimer();   
+            stopTimer = setInterval(countTime, 1000);
+        }
+    })
+    
+    $("#spaceship").addClass('spaceship')
+
 })///////////////END OF WINDOW ONLOAD/////////////////
 
 //////////////FUNCTIONS LOCAL STORAGE/////////////
@@ -257,8 +289,11 @@ function onLeft() {
     if (board.keepPlaying == false) {
         if (board.gameEnd == 'Boom!') {
             timeOnGameStop()
+            $('.atagBox1').hide();
+            $('.middleBtns').hide()
+            $('.atagBox2').addClass('col-md-offset-5')
             $('#tableBody').find('button').attr('disabled', 'disabled');
-            $('#btn_pause').css('display', 'none')
+            // $('#btn_pause').hide()
             console.log('U heeft op een mijn geklikt, u bent verloren!')
         } else {
             timeOnGameStop()
@@ -361,3 +396,5 @@ function showCounterInMinutesAndSeconds(counter) {
     var seconds = counter - minutes * 60;
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 }
+
+
