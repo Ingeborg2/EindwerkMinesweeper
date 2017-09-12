@@ -17,7 +17,7 @@ $(document).ready(function () {
         var randTop = Math.floor(Math.random() * height);
         $('.background').append('<div class="star f' + randClass + '" style=" z-index: 0 ; top:' + randTop + 'px;left:' + randLeft + 'px;"></div>');
     }
-    $('#btn_startGame').addClass('verschijn2')
+    // $('#btn_startGame').addClass('verschijn2')
     //////////LOCAL STORAGE////////////
     var form = $("#frm");
     $('#btn_startGame').click(function () {
@@ -63,6 +63,17 @@ $(document).ready(function () {
         $(this).hide();
         $('#btn_restart').show()
         timeOnGameStop();
+    });
+
+    ////// form validation //////
+    $('input').on('blur', function() {
+        if ($("#frm").valid()) {
+            $('input').on('keyup', function() {
+                if ($('#numberOfCols').val()!= 0 && $('#numberOfRows').val()!= 0 && $('#numberOfMines').val()!= 0){
+                    $('#btn_startGame').addClass('verschijn2')
+                }
+            })
+        } 
     });
 })///////////////END OF WINDOW ONLOAD/////////////////
 
