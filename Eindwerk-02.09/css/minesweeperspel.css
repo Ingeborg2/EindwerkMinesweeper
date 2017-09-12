@@ -379,7 +379,7 @@ h1,h3,label {
 }
 
 .verschijn2{
-  animation: verschijn2 0.7s ease-in-out 1s forwards;
+  animation: verschijn2 1.0s ease-in-out 0s forwards;
 }
 
 @keyframes verschijn2 {
@@ -411,6 +411,7 @@ h1,h3,label {
     border: 1px solid white;
     width: 200px;
     margin-bottom: 10px;
+    visibility: hidden;
 }
 .atag{
     color: white;

@@ -20,11 +20,6 @@ $(document).ready(function () {
     // $('#btn_startGame').addClass('verschijn2')
     //////////LOCAL STORAGE////////////
     var form = $("#frm");
-    $('#btn_startGame').click(function () {
-        if (form.valid()) {
-            saveGameConfigInLocalStorage();
-        }
-    });
 
     $('#naamSpeler').change(function () {
         getInfoNotLoggedInPlayer();
@@ -35,14 +30,18 @@ $(document).ready(function () {
 
     ////////////////MINESWEEPER GENERATE/////////////////
     $('#btn_startGame').click(function () {
-        vulTabel();
-        $('#undiscoveredMines').html(board.undiscovered())
-        $('.clockMines').css('display' , 'block');
-        $('.formbutton').hide();
-        $('.topplayers').hide();
-        clearInterval(stopTimer);
-        resetTimer();
-        stopTimer = setInterval(countTime, 1000);
+        if (form.valid()) {
+            saveGameConfigInLocalStorage();
+            vulTabel();
+            $('#undiscoveredMines').html(board.undiscovered())
+            $('.clockMines').css('display' , 'block');
+            $('.formbutton').hide();
+            $('.topplayers').hide();
+            $('.atagBox').css('visibility', 'visible');
+            clearInterval(stopTimer);
+            resetTimer();
+            stopTimer = setInterval(countTime, 1000);
+        }
     })
     $('#tableBody').bind('contextmenu', function (e) { return false })
 
@@ -65,14 +64,20 @@ $(document).ready(function () {
         timeOnGameStop();
     });
 
-    ////// form validation for Start Game:w //////
+    ////// show start button //////
+   
     $('input').on('blur', function() {
         if ($("#frm").valid()) {
-            $('input').on('keyup', function() {
-                if ($('#numberOfCols').val()!= 0 && $('#numberOfRows').val()!= 0 && $('#numberOfMines').val()!= 0){
-                    $('#btn_startGame').addClass('verschijn2')
-                }
-            })
+            if ($('#numberOfCols').val()!= 0 && $('#numberOfRows').val()!= 0 && $('#numberOfMines').val()!= 0){
+                $('#btn_startGame').addClass('verschijn2')
+            } else {
+                console.log('hallo')
+                $('input').on('keyup', function() {
+                    if ($('#numberOfCols').val()!= 0 && $('#numberOfRows').val()!= 0 && $('#numberOfMines').val()!= 0){
+                        $('#btn_startGame').addClass('verschijn2')
+                    }
+                })
+            }
         } 
     });
 })///////////////END OF WINDOW ONLOAD/////////////////
@@ -114,7 +119,7 @@ function showGameConfigFromLocalStorage() {
     var login = JSON.parse(localStorage.getItem('login'));
     if (gameConfig == null) {
         gameConfig = [];
-    } else {
+    } else if (login != null){
         for (var i = 0; i < gameConfig.length; i++) {
             if (login.name == gameConfig[i].name) {
                 $('#naamSpeler').val(gameConfig[i].name);
@@ -130,19 +135,24 @@ function getInfoNotLoggedInPlayer() {
     var prefilled = false;
     var naam = $('#naamSpeler').val();
     var gameConfig = JSON.parse(localStorage.getItem('gameConfig'));
-    for (var i = 0; i < gameConfig.length; i++) {
-        if (naam == gameConfig[i].name) {
-            prefilled = true;
-            //alert("test geslaagd");
-            parseInt($('#numberOfRows').val(gameConfig[i].rows));
-            parseInt($('#numberOfCols').val(gameConfig[i].cols));
-            parseInt($('#numberOfMines').val(gameConfig[i].mines));
+    if (gameConfig == null) {
+        gameConfig = [];
+    } else {
+        for (var i = 0; i < gameConfig.length; i++) {
+            if (naam == gameConfig[i].name) {
+                prefilled = true;
+                //alert("test geslaagd");
+                $('#numberOfRows').val(gameConfig[i].rows);
+                $('#numberOfCols').val(gameConfig[i].cols);
+                $('#numberOfMines').val(gameConfig[i].mines);
+            }
         }
     }
+    
     if (!prefilled) {
-        parseInt($('#numberOfRows').val(0));
-        parseInt($('#numberOfCols').val(0));
-        parseInt($('#numberOfMines').val(0));
+        $('#numberOfRows').val(10);
+        $('#numberOfCols').val(10);
+        $('#numberOfMines').val(10);
     }
 };
 
@@ -247,12 +257,15 @@ function onLeft() {
         if (board.gameEnd == 'Boom!') {
             timeOnGameStop()
             $('#tableBody').find('button').attr('disabled', 'disabled');
+            $('#btn_pause').css('display', 'none')
             console.log('U heeft op een mijn geklikt, u bent verloren!')
         } else {
             timeOnGameStop()
             $('#frm').validate()
             $('.submitBtn').css('display', 'inline')
+            $('#btn_pause').css('display', 'none')
             console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
+
         }
     }
 
@@ -276,6 +289,7 @@ function onRight() {
         timeOnGameStop()
         $('#frm').validate()
         $('.submitBtn').css('display', 'inline')
+        $('#btn_pause').css('display', 'none')
         console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
     }
 
@@ -333,6 +347,7 @@ function countTime() {
         counter++;
         $('#clock').html(showCounterInMinutesAndSeconds(counter));
         $('#btn_pause').show();
+        
     }
 }
 
