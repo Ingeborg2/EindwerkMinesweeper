@@ -58,6 +58,7 @@ $(document).ready(function () {
 
     $('#btn_pause').click(function () {
         $('#gameInterrupted').css('display', 'block');
+        $('#pauseimage').addClass('pauseanimate');
         $('#game').css('display', 'none');
         $(this).hide();
         $('#btn_restart').show()
