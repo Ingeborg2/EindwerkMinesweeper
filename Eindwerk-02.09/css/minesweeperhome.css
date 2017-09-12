@@ -1,7 +1,7 @@
 .background {
     background-image: url('../images/backgroundweb.svg');
     min-height: 100vh;
-    min-width: 100vh;
+    min-width: 50vh;
     background-size: cover;
   }
 
@@ -37,6 +37,28 @@
   }
   100%{
     transform: rotate(360deg);
+  }
+}
+
+#spaceship {
+  height: auto;
+  width: 6%;
+  position: absolute;
+  transform: rotate(45deg)
+}
+
+.spaceship {
+  animation: vliegen 10s ease-in-out 0s infinite;
+}
+
+@keyframes vliegen {
+  0% {
+    left: -150px;
+    top: 500px;
+  }
+  100%{
+    left: 500px;
+    top: -300px;
   }
 }
 
