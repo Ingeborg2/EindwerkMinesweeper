@@ -33,6 +33,8 @@ $(document).ready(function () {
         if (form.valid()) {
             saveGameConfigInLocalStorage();
             vulTabel();
+            $('.winOverlay').hide();
+            $('.lostOverlay').hide();
             $('#undiscoveredMines').html(board.undiscovered())
             $('.clockMines').css('display', 'block');
             $('.formbutton').hide();
@@ -95,6 +97,12 @@ $(document).ready(function () {
 
     $('#newGame').click(function () {
         if (form.valid()) {
+            $('.winOverlay').hide();
+            $('.lostOverlay').hide();
+            $('.atagBox1').show();
+            $('#btn2').hide()
+            $('.middleBtns').show()
+            $('.atagBox2').removeClass('col-md-offset-5');
             saveGameConfigInLocalStorage();
             vulTabel();
             $('#undiscoveredMines').html(board.undiscovered())

@@ -37,7 +37,7 @@ app.get("/spelers", function (request, response) {
         console.log("Connected successfully to server");
         console.log(qryObj)
         var collection = db.collection('spelers');
-        collection.find(qryObj, { name: 1, rows: 1, cols: 1, time: 1, mines: 1 }).sort({ time: 1 }).limit(10).toArray(function (err, docs) {
+        collection.find(qryObj, { name: 1, rows: 1, cols: 1, time: 1, mines: 1 }).sort({ time: 1 }).toArray(function (err, docs) {
             console.log("Speler document(s) found:");
             response.end(JSON.stringify(docs));
             db.close();
