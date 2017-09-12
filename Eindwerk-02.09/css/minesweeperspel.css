@@ -428,11 +428,10 @@ td {
    text-decoration: none;
 }
 
-<<<<<<< HEAD
 /* ////// overlays ///// */
 .overlayWin{
     background-image: url(../images/win.png)
-=======
+}
 .pauseanimate{
     animation: pause 0.5s ease-in-out forwards
 }
@@ -452,5 +451,4 @@ td {
         /* transform: rotate(360deg); */
         opacity: 1;
     }
->>>>>>> 1dec835899d15d2f0212c58ad068d0e0618477d1
 }
