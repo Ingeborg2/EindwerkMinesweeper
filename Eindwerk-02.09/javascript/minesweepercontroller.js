@@ -34,7 +34,7 @@ $(document).ready(function () {
             saveGameConfigInLocalStorage();
             vulTabel();
             $('#undiscoveredMines').html(board.undiscovered())
-            $('.clockMines').css('display' , 'block');
+            $('.clockMines').css('display', 'block');
             $('.formbutton').hide();
             $('.topplayers').hide();
             $('#game').show();
@@ -42,7 +42,7 @@ $(document).ready(function () {
             $('.atagBox1').css('visibility', 'visible');
             $('.atagBox2').css('visibility', 'visible');
             clearInterval(stopTimer);
-            resetTimer();   
+            resetTimer();
             stopTimer = setInterval(countTime, 1000);
         }
     })
@@ -69,23 +69,23 @@ $(document).ready(function () {
     });
 
     ////// show start button //////
-   
-    $('input').on('blur', function() {
+
+    $('input').on('blur', function () {
         if ($("#frm").valid()) {
-            if ($('#numberOfCols').val()!= 0 && $('#numberOfRows').val()!= 0 && $('#numberOfMines').val()!= 0){
+            if ($('#numberOfCols').val() != 0 && $('#numberOfRows').val() != 0 && $('#numberOfMines').val() != 0) {
                 $('#btn_startGame').addClass('verschijn2')
             } else {
                 console.log('hallo')
-                $('input').on('keyup', function() {
-                    if ($('#numberOfCols').val()!= 0 && $('#numberOfRows').val()!= 0 && $('#numberOfMines').val()!= 0){
+                $('input').on('keyup', function () {
+                    if ($('#numberOfCols').val() != 0 && $('#numberOfRows').val() != 0 && $('#numberOfMines').val() != 0) {
                         $('#btn_startGame').addClass('verschijn2')
                     }
                 })
             }
-        } 
+        }
     });
 
-    $('#reconfig').click(function(){
+    $('#reconfig').click(function () {
         $('#game').css('display', 'none');
         $('.formbutton').show();
         $('.topplayers').show();
@@ -93,12 +93,12 @@ $(document).ready(function () {
         $('.knoppendiv').hide();
     })
 
-    $('#newGame').click(function(){
+    $('#newGame').click(function () {
         if (form.valid()) {
             saveGameConfigInLocalStorage();
             vulTabel();
             $('#undiscoveredMines').html(board.undiscovered())
-            $('.clockMines').css('display' , 'block');
+            $('.clockMines').css('display', 'block');
             $('.formbutton').hide();
             $('.topplayers').hide();
             $('#game').show();
@@ -106,13 +106,27 @@ $(document).ready(function () {
             $('.atagBox1').css('visibility', 'visible');
             $('.atagBox2').css('visibility', 'visible');
             clearInterval(stopTimer);
-            resetTimer();   
+            resetTimer();
             stopTimer = setInterval(countTime, 1000);
         }
-    })
-    
-    $("#spaceship").addClass('spaceship')
 
+    })
+
+
+
+    /////// Rumble ///////
+    $('#rumble').jrumble({
+        x: 10,
+        y: 10,
+        rotation: 1
+    });
+
+    $('#btnTest').click(function () {
+        //alert("ok");
+
+    });
+
+    $("#spaceship").addClass('spaceship')
 })///////////////END OF WINDOW ONLOAD/////////////////
 
 //////////////FUNCTIONS LOCAL STORAGE/////////////
@@ -152,7 +166,7 @@ function showGameConfigFromLocalStorage() {
     var login = JSON.parse(localStorage.getItem('login'));
     if (gameConfig == null) {
         gameConfig = [];
-    } else if (login != null){
+    } else if (login != null) {
         for (var i = 0; i < gameConfig.length; i++) {
             if (login.name == gameConfig[i].name) {
                 $('#naamSpeler').val(gameConfig[i].name);
@@ -181,7 +195,7 @@ function getInfoNotLoggedInPlayer() {
             }
         }
     }
-    
+
     if (!prefilled) {
         $('#numberOfRows').val(10);
         $('#numberOfCols').val(10);
@@ -291,15 +305,22 @@ function onLeft() {
             timeOnGameStop()
             $('.atagBox1').hide();
             $('.middleBtns').hide()
-            $('.atagBox2').addClass('col-md-offset-5')
-            $('#tableBody').find('button').attr('disabled', 'disabled');
+            $('.atagBox2').addClass('col-md-offset-5');
             // $('#btn_pause').hide()
+            $('#rumble').trigger('startRumble');
+            setTimeout(function () { 
+                $('#rumble').trigger('stopRumble'); 
+            }, 1000);
+            $('#tableBody').find('button').attr('disabled', 'disabled');
+            $('#btn_pause').css('display', 'none')
+            $('.lostOverlay').show()
             console.log('U heeft op een mijn geklikt, u bent verloren!')
         } else {
             timeOnGameStop()
             $('#frm').validate()
             $('.submitBtn').css('display', 'inline')
             $('#btn_pause').css('display', 'none')
+            $('.winOverlay').show()
             console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
 
         }
@@ -326,6 +347,7 @@ function onRight() {
         $('#frm').validate()
         $('.submitBtn').css('display', 'inline')
         $('#btn_pause').css('display', 'none')
+        $('.winOverlay').show()
         console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
     }
 
@@ -383,7 +405,7 @@ function countTime() {
         counter++;
         $('#clock').html(showCounterInMinutesAndSeconds(counter));
         $('#btn_pause').show();
-        
+
     }
 }
 
@@ -397,4 +419,9 @@ function showCounterInMinutesAndSeconds(counter) {
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 }
 
+///// overlays /////
+function openWinOverlay() {
+    $('.winOverlay').css({ visibility: 'visible', opacity: 1 });
+    // document.getElementById("overlay").style.opacity = 1;
+}
 
