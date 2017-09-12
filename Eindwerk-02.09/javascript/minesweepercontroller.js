@@ -81,6 +81,18 @@ $(document).ready(function () {
             }
         } 
     });
+
+    /////// Rumble ///////
+    $('#rumble').jrumble({
+        x: 10,
+        y: 10,
+        rotation: 1
+        });
+    
+     $('#btnTest').click(function () {
+         //alert("ok");
+        
+    });
 })///////////////END OF WINDOW ONLOAD/////////////////
 
 //////////////FUNCTIONS LOCAL STORAGE/////////////
@@ -257,15 +269,18 @@ function onLeft() {
     if (board.keepPlaying == false) {
         if (board.gameEnd == 'Boom!') {
             timeOnGameStop()
+            $('#rumble').trigger('startRumble');
+            setTimeout(function(){$('#rumble').trigger('stopRumble'); }, 1000);
             $('#tableBody').find('button').attr('disabled', 'disabled');
             $('#btn_pause').css('display', 'none')
+            $('.lostOverlay').show()
             console.log('U heeft op een mijn geklikt, u bent verloren!')
         } else {
             timeOnGameStop()
             $('#frm').validate()
             $('.submitBtn').css('display', 'inline')
             $('#btn_pause').css('display', 'none')
-            openWinOverlay();
+            $('.winOverlay').show()
             console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
 
         }
@@ -292,7 +307,7 @@ function onRight() {
         $('#frm').validate()
         $('.submitBtn').css('display', 'inline')
         $('#btn_pause').css('display', 'none')
-        openWinOverlay();
+        $('.winOverlay').show()
         console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
     }
 

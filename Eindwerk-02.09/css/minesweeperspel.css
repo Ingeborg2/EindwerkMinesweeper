@@ -429,9 +429,7 @@ td {
 }
 
 /* ////// overlays ///// */
-.overlayWin{
-    background-image: url(../images/win.png)
-}
+
 .pauseanimate{
     animation: pause 0.5s ease-in-out forwards
 }
@@ -451,4 +449,26 @@ td {
         /* transform: rotate(360deg); */
         opacity: 1;
     }
+}
+/* #tableBody{
+    z-index: 50
+} */
+.winOverlay{
+    position: absolute;
+    left: 25%;
+    bottom: 25%;
+    width: 50%;
+    z-index: 100;
+}
+.lostOverlay{
+    position: absolute;
+    left: 42%;
+    bottom: 25%;
+    height: 50%;
+    z-index: 100;
+}
+
+#game{
+    width: 100%;
+    position: relative;
 }

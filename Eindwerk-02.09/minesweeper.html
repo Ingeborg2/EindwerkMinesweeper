@@ -10,6 +10,7 @@
     <script src="jquery-3.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script type="text/javascript" src="javascript/rumble/jquery.jrumble.1.3.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
@@ -17,14 +18,13 @@
 
     <link rel="stylesheet" type="text/css" href="css/minesweeperspel.css">
     <link rel="stylesheet" type="text/css" href="css/minesweeper.css">
-
     <script src="javascript/minesweeper-model.js"></script>
     <script src="javascript/minesweepercontroller.js"></script>
     <title>Minesweeper</title>
 </head>
 
 <body>
-    <div class="background">
+    <div class="background" id="rumble">
 
         <!-- ////////////////////////  Planet  ////////////////////// -->
         <div class="planet">
@@ -90,12 +90,13 @@
                         </div>
 
                         <!-- /////////// spel modus ///////// -->
-                        <div class="text-center col-md-12 overlaywin">
+                        <div id="game" class="col-md-12 text-center">
+                            <img  src="images/win.png" alt="You won!" class="winOverlay" hidden>
+                            <img  src="images/bombTemp.png" alt="You lost!" class="lostOverlay" hidden>
                             <table>
                                 <tbody id="tableBody">
                                 </tbody>
                             </table>
-                            <img id="winImg" class="winOverlay" src="images/win.png" alt="You won!" hidden>
                         </div>
                     </div>
 
