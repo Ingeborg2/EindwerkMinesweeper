@@ -65,7 +65,7 @@ $(document).ready(function () {
         timeOnGameStop();
     });
 
-    ////// form validation //////
+    ////// form validation for Start Game:w //////
     $('input').on('blur', function() {
         if ($("#frm").valid()) {
             $('input').on('keyup', function() {
