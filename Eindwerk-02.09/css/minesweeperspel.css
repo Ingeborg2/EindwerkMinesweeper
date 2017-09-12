@@ -2,9 +2,9 @@
 .background {
     background-image: url('../images/backgroundweb.svg');
     min-height: 100vh;
-    min-width: 50vh;;
+    width: 100%;
     background-size: cover;
-    position: relative;
+    /* overflow: hidden; */
     z-index: 0
 }
 
@@ -435,8 +435,10 @@ td {
     width: 3%;
     position: absolute;
     transform: rotate(-45deg);
-    right: -150px;
+    /* display: none; */
+    right: 0px;
     top: 500px;
+    opacity: 0;
   }
 
 .spaceship {
@@ -445,10 +447,16 @@ td {
   
   @keyframes vliegen {
     0% {
-      right: -150px;
+        display: block;
+        opacity: 0;
+      right:0px;
       top: 500px;
     }
+    25%{
+        opacity: 1;
+    }
     100%{
+        opacity:1;
       right: 500px;
       top: -300px;
     }
