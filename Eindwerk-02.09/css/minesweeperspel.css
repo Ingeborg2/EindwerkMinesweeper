@@ -2,7 +2,7 @@
 .background {
     background-image: url('../images/backgroundweb.svg');
     min-height: 100vh;
-    width: 100vw;
+    min-width: 50vh;;
     background-size: cover;
     position: relative;
     z-index: 0
@@ -428,7 +428,29 @@ td {
    text-decoration: none;
 }
 
+<<<<<<< HEAD
 /* ////// overlays ///// */
 .overlayWin{
     background-image: url(../images/win.png)
+=======
+.pauseanimate{
+    animation: pause 0.5s ease-in-out forwards
+}
+
+@keyframes pause {
+    0%{
+        width: 0%;
+        height: 0%;
+        margin: auto;
+        /* transform: rotate(0deg); */
+        opacity: 0;
+    }
+    100%{
+        width: 100%;
+        height: 100%;
+        margin: auto;       
+        /* transform: rotate(360deg); */
+        opacity: 1;
+    }
+>>>>>>> 1dec835899d15d2f0212c58ad068d0e0618477d1
 }
