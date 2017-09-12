@@ -14,8 +14,9 @@ $(document).ready(function () {
         var randLeft = Math.floor(Math.random() * document.body.clientWidth);
         var randTop = Math.floor(Math.random() * height);
         $('body').append('<div class="star f' + randClass + '" style="top:' + randTop + 'px;left:' + randLeft + 'px;"></div>');
-
+    
     }
+    $("#spaceship").addClass('spaceship')
 })
 
 // $(document).ready(function () {
