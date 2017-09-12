@@ -264,6 +264,7 @@ function onLeft() {
             $('#frm').validate()
             $('.submitBtn').css('display', 'inline')
             $('#btn_pause').css('display', 'none')
+            openWinOverlay();
             console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
 
         }
@@ -290,6 +291,7 @@ function onRight() {
         $('#frm').validate()
         $('.submitBtn').css('display', 'inline')
         $('#btn_pause').css('display', 'none')
+        openWinOverlay();
         console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
     }
 
@@ -360,3 +362,13 @@ function showCounterInMinutesAndSeconds(counter) {
     var seconds = counter - minutes * 60;
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
 }
+
+///// overlays /////
+function openWinOverlay() {
+    $('.winOverlay').css({visibility:'visible', opacity: 1});
+    // document.getElementById("overlay").style.opacity = 1;
+}
+// function close() {
+//     document.getElementById("overlay").style.opacity = 1;
+//     document.getElementById("overlay").style.visibility = "visible";
+// }

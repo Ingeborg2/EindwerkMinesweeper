@@ -34,13 +34,13 @@ h1,h3,label {
     animation: draaien 20s ease-in-out 5s infinite;
   }
 
-  #clock{
+#clock{
     font-family:'LED';
     color: red;
     font-size: 4rem;
   }
   
-  @keyframes draaien {
+@keyframes draaien {
     0%{
       transform: rotate(0deg);
     }
@@ -49,14 +49,14 @@ h1,h3,label {
     }
   }
 
-  .buttonhide{
+.buttonhide{
     display: none;
   }
-  .buttonhide1{
+.buttonhide1{
     display: none;
   }
 
-  #btn_restart,#btn_pause{
+#btn_restart,#btn_pause{
       display:none;
   }
 
@@ -80,7 +80,7 @@ h1,h3,label {
 
 
 
-  td {
+td {
     color: white;
     font-size: 20px;
     font-family: 'Ubuntu Mono', monospace;
@@ -88,7 +88,7 @@ h1,h3,label {
   }
 
 
-  @keyframes fa0 {
+@keyframes fa0 {
     0%   { opacity:1; }
     50%  { opacity:1; }
     51%  { opacity:0; }
@@ -96,13 +96,13 @@ h1,h3,label {
     100% { opacity:1; }
   }
   
-  .f0 {
+.f0 {
       animation: fa1 10s infinite;
       width: 2px;
           height: 2px;
   }
-  
-  @keyframes fa1 {
+
+@keyframes fa1 {
     0%   { opacity:1; }
     10%  { opacity:1; }
     21%  { opacity:0; }
@@ -426,4 +426,9 @@ h1,h3,label {
     color: red;
     font-size: 2rem;
    text-decoration: none;
+}
+
+/* ////// overlays ///// */
+.overlayWin{
+    background-image: url(../images/win.png)
 }
