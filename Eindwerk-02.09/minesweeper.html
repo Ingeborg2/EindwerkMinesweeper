@@ -11,10 +11,8 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script type="text/javascript" src="javascript/rumble/jquery.jrumble.1.3.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="css/minesweeperspel.css">
     <link rel="stylesheet" type="text/css" href="css/minesweeper.css">
@@ -31,8 +29,8 @@
             <img src="images/planet.png" id="planet">
         </div>
         <div class="spaceshipdiv">
-                <img src="images/spaceship.png" id="spaceship">
-            </div>
+            <img src="images/spaceship.png" id="spaceship">
+        </div>
         <!-- planet afsluiten -->
         <!-- /////////// pagina inhoud ///////// -->
         <div class="wrapperdiv">
@@ -67,89 +65,97 @@
                 <!-- /////////////////////////// MINESWEEPER ///////////////////////////////////-->
 
                 <!--///////////// CLOCK /////////////-->
-                    <div class="row clockMines">
-                        <div class="col-md-6">
-                            <span class="clocktimetext">Time : </span>
-                            <span id="clock">
+                <div class="row clockMines">
+                    <div class="col-md-6">
+                        <span class="clocktimetext">Time : </span>
+                        <span id="clock">
 
                             </span>
-                        </div>
+                    </div>
 
-                        <!-- ////////// UNDISCOVERED MINES /////////////////-->
-                        <div class="col-md-6">
-                            <span class="clocktimetext">Mines : </span>
-                            <span id="undiscoveredMines">
+                    <!-- ////////// UNDISCOVERED MINES /////////////////-->
+                    <div class="col-md-6">
+                        <span class="clocktimetext">Mines : </span>
+                        <span id="undiscoveredMines">
                                 
                             </span>
-                        </div>
-
                     </div>
 
-                    <!-- //////// Spelbord /////// -->
-                    <div class="row gamediv">
-                        <!-- ////////// pauze modus /////// -->
-                        <div id="gameInterrupted" class="col-md-12">
-                            <img src="images/pause.png" alt="pauze" id="pauseimage">
-                        </div>
+                </div>
 
-                        <!-- /////////// spel modus ///////// -->
-                        <div id="game" class="col-md-12 text-center">
-                            <img  src="images/win.png" alt="You won!" class="winOverlay" hidden>
-                            <img  src="images/bombTemp.png" alt="You lost!" class="lostOverlay" hidden>
-                            <table>
-                                <tbody id="tableBody">
-                                </tbody>
-                            </table>
-                        </div>
+                <!-- //////// Spelbord /////// -->
+                <div class="row gamediv">
+                    <!-- ////////// pauze modus /////// -->
+                    <div id="gameInterrupted" class="col-md-12">
+                        <img src="images/pause.png" alt="pauze" id="pauseimage">
                     </div>
+
+                    <!-- /////////// spel modus ///////// -->
+                    <div id="game" class="col-md-12 text-center">
+                        <img src="images/win.png" alt="You won!" class="winOverlay" hidden>
+                        <img src="images/bombTemp.png" alt="You lost!" class="lostOverlay" hidden>
+                        <table>
+                            <tbody id="tableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
                 <!-- spelbord afsluiten -->
 
 
                 <!-- //////////// TOPSPELERS  /////////////////////-->
-                <div class="topplayers">
-                <div>
-                    <input type="button" id="btn_players" value="CHECK TOP PLAYERS" class="btn btn-danger">
-                </div>
-                <table id="topspeler" style="display: none" class="table table-curved table responsive">
-                    <tr>
-                        <td class="heading">Name : </td>
-                        <td class="heading">columns : </td>
-                        <td class="heading">Rows : </td>
-                        <td class="heading">Time : </td>
-                        <td class="heading">Mines : </td>
-                    </tr>
-                </table>
-                </div>
-                <!-- ////////////// Spelknoppen ///////////// -->
-                <div class="row">
-                    <div class="knoppendiv">
-                        <div class="col-md-2 col-md-offset-2 atagBox1">
-                    <!-- <input type="button" id="reconfig" value="RECONFIGURATE" class="btn btn-warning"> -->
-                            <input type="button" class="atag" id="reconfig" value="RECONFIG">
-                        </div>
-                        <div class="col-md-4 middleBtns" >
-                            <input type="button" id="btn_pause" value="PAUSE" class="btn btn-danger" hidden>
-                            <input type="button" id="btn_restart" value="CONTINUE" class="btn btn-danger" hidden>
-                    <!-- <div class="buttonhide1"> -->
-                            <input type="submit" id="btn2" value="SUBMIT SCORE" onclick="timeOnGameStop()" class="submitBtn btn btn-danger">
-                        </div>
-                        <div class="col-md-2 atagBox2">
-                    <!-- <input type="button" id="newgame" value="NEW GAME" class="btn btn-warning"> -->
-                            <input type="button" class="atag" value="NEW GAME" id="newGame">
-                        </div>
-                    </div>
-                </div>
-                <!-- Spelknoppen afsluiten -->
-            </div>
-            <!-- container afsluiten -->
-        </div>
-        <!-- wrapper afsluiten -->
-    </div>
-    <!-- background afsluiten -->
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+                <div class="topplayers">
+                    <div>
+                        <input type="button" id="btn_players" value="CHECK TOP PLAYERS" class="btn btn-danger">
+                    </div>
+
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <table id="topspeler" style="display: none" class="table table-curved table responsive">
+                                    <tr>
+                                        <td class="heading panel-title">Name : </td>
+                                        <td class="heading panel-title">columns : </td>
+                                        <td class="heading panel-title">Rows : </td>
+                                        <td class="heading panel-title">Time : </td>
+                                        <td class="heading panel-title">Mines : </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- ////////////// Spelknoppen ///////////// -->
+                            <div class="row">
+                                <div class="knoppendiv">
+                                    <div class="col-md-2 col-md-offset-2 atagBox1">
+                                        <!-- <input type="button" id="reconfig" value="RECONFIGURATE" class="btn btn-warning"> -->
+                                        <input type="button" class="atag" id="reconfig" value="RECONFIG">
+                                    </div>
+                                    <div class="col-md-4 middleBtns">
+                                        <input type="button" id="btn_pause" value="PAUSE" class="btn btn-danger" hidden>
+                                        <input type="button" id="btn_restart" value="CONTINUE" class="btn btn-danger" hidden>
+                                        <!-- <div class="buttonhide1"> -->
+                                        <input type="submit" id="btn2" value="SUBMIT SCORE" onclick="timeOnGameStop()" class="submitBtn btn btn-danger">
+                                    </div>
+                                    <div class="col-md-2 atagBox2">
+                                        <!-- <input type="button" id="newgame" value="NEW GAME" class="btn btn-warning"> -->
+                                        <input type="button" class="atag" value="NEW GAME" id="newGame">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Spelknoppen afsluiten -->
+                        </div>
+                        <!-- container afsluiten -->
+                    </div>
+                    <!-- wrapper afsluiten -->
+                </div>
+                <!-- background afsluiten -->
+
+                <!-- ////////////// Sound Effects ///////////// -->
+                <audio id="playExplosion" src="sounds/Explosion.mp3" type="audio/mpeg"></audio>
+                <audio id="playTaDa" src="sounds/Ta-da-orchestra-fanfare.mp3" type="audio/mpeg"></audio>
+
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 
 </html>
