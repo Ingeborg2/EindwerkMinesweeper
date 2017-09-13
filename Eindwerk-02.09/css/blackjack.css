@@ -1,0 +1,448 @@
+body {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 2rem 0;
+    /* position: relative; */
+    background-image: url('../images/backgroundweb.svg');
+    z-index: 0
+}
+#planet {
+    margin-bottom: 50px;
+    margin-left: 15%;
+    position: absolute;
+    height: 150px;
+    width: 160px;
+    animation: draaien 20s ease-in-out 5s infinite;
+}
+
+@keyframes draaien {
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+}
+
+
+@keyframes fa0 {
+    0%   { opacity:1; }
+    50%  { opacity:1; }
+    51%  { opacity:0; }
+    52%  { opacity:1; }
+    100% { opacity:1; }
+  }
+  
+.f0 {
+      animation: fa1 10s infinite;
+      width: 2px;
+          height: 2px;
+  }
+
+@keyframes fa1 {
+    0%   { opacity:1; }
+    10%  { opacity:1; }
+    21%  { opacity:0; }
+    32%  { opacity:1; }
+    100% { opacity:1; }
+  }
+  
+  .f1 {
+      animation: fa1 15s infinite;
+      width: 1px;
+          height: 1px;
+  }
+  
+  @keyframes fa2 {
+    0%   { opacity:.8; }
+    75%  { opacity:.8; }
+    85%  { opacity:0; }
+    95%  { opacity:.8; }
+    100% { opacity:.8; }
+  }
+  
+  .f2 {
+      animation: fa2 5s infinite;
+      width: 2px;
+          height: 2px;
+  }
+  
+  @keyframes fa3 {
+    0%   { opacity:.4; }
+    11%  { opacity:.4; }
+    32%  { opacity:0; }
+    53%  { opacity:.4; }
+    100% { opacity:.4; }
+  }
+  
+  .f3 {
+      animation: fa3 8s infinite;
+      width: 1px;
+          height: 1px;
+  }
+  
+  @keyframes fa4 {
+    0%   { opacity:.2; }
+    50%  { opacity:.2; }
+    61%  { opacity:0; }
+    72%  { opacity:.2; }
+    100% { opacity:.2; }
+  }
+  
+  .f4 {
+      animation: fa4 10s infinite;
+      width: 3px;
+          height: 3px;
+  }
+  
+  @keyframes fa5 {
+    0%   { opacity:.6; }
+    20%  { opacity:.6; }
+    51%  { opacity:0; }
+    82%  { opacity:.6; }
+    100% { opacity:.6; }
+  }
+  
+  .f5 {
+      animation: fa5 10s infinite;
+    width: 1px;
+    height: 1px;
+}
+
+@keyframes fa2 {
+    0% {
+        opacity: .8;
+    }
+    75% {
+        opacity: .8;
+    }
+    85% {
+        opacity: 0;
+    }
+    95% {
+        opacity: .8;
+    }
+    100% {
+        opacity: .8;
+    }
+}
+
+.f2 {
+    animation: fa2 5s infinite;
+    width: 2px;
+    height: 2px;
+}
+
+@keyframes fa3 {
+    0% {
+        opacity: .4;
+    }
+    11% {
+        opacity: .4;
+    }
+    32% {
+        opacity: 0;
+    }
+    53% {
+        opacity: .4;
+    }
+    100% {
+        opacity: .4;
+    }
+}
+
+.f3 {
+    animation: fa3 8s infinite;
+    width: 1px;
+    height: 1px;
+}
+
+@keyframes fa4 {
+    0% {
+        opacity: .2;
+    }
+    50% {
+        opacity: .2;
+    }
+    61% {
+        opacity: 0;
+    }
+    72% {
+        opacity: .2;
+    }
+    100% {
+        opacity: .2;
+    }
+}
+
+.f4 {
+    animation: fa4 10s infinite;
+    width: 3px;
+    height: 3px;
+}
+
+@keyframes fa5 {
+    0% {
+        opacity: .6;
+    }
+    20% {
+        opacity: .6;
+    }
+    51% {
+        opacity: 0;
+    }
+    82% {
+        opacity: .6;
+    }
+    100% {
+        opacity: .6;
+    }
+}
+
+.f5 {
+    animation: fa5 10s infinite;
+    width: 1px;
+    height: 1px;
+}
+
+@keyframes fa6 {
+    0% {
+        opacity: .2;
+    }
+    50% {
+        opacity: .2;
+    }
+    51% {
+        opacity: 0;
+    }
+    52% {
+        opacity: .2;
+    }
+    100% {
+        opacity: .2;
+    }
+}
+
+.f6 {
+    animation: fa1 20s infinite;
+    width: 2px;
+    height: 1px;
+}
+
+@keyframes fa7 {
+    0% {
+        opacity: .5;
+    }
+    50% {
+        opacity: .5;
+    }
+    60% {
+        opacity: 0;
+    }
+    80% {
+        opacity: .5;
+    }
+    100% {
+        opacity: .5;
+    }
+}
+
+.f7 {
+    animation: fa7 17s infinite;
+    width: 1px;
+    height: 2px;
+}
+
+@keyframes fa8 {
+    0% {
+        opacity: .9;
+    }
+    20% {
+        opacity: .9;
+    }
+    51% {
+        opacity: 0;
+    }
+    82% {
+        opacity: .9;
+    }
+    100% {
+        opacity: .9;
+    }
+}
+
+.f8 {
+    animation: fa8 10s infinite;
+    width: 2px;
+    height: 2px;
+}
+
+@keyframes fa9 {
+    0% {
+        opacity: .1;
+    }
+    70% {
+        opacity: .1;
+    }
+    75% {
+        opacity: 0;
+    }
+    80% {
+        opacity: .1;
+    }
+    100% {
+        opacity: .1;
+    }
+}
+
+.f9 {
+    animation: fa9 15s infinite;
+    width: 2px;
+    height: 2px;
+}
+
+.star {
+    position: absolute;
+    background: gold;
+    /* background: #a7a9ac; */
+    /* z-index: 0; */
+}
+
+
+  #spaceship {
+    height: auto;
+    width: 3%;
+    position: absolute;
+    transform: rotate(-45deg);
+    /* display: none; */
+    right: 0px;
+    top: 500px;
+    opacity: 0;
+  }
+
+.spaceship {
+    animation: vliegen 10s ease-in-out 10s forwards;
+  }
+  
+  @keyframes vliegen {
+    0% {
+        display: block;
+        opacity: 0;
+      right:0px;
+      top: 500px;
+    }
+    25%{
+        opacity: 1;
+    }
+    100%{
+        opacity:1;
+      right: 500px;
+      top: -300px;
+    }
+  }
+
+
+img {
+    margin: 0px 5px 0px 5px;
+    width: 80px;
+}
+
+div {
+    padding: 5px;
+    text-align: center;
+}
+
+#dealer {
+    width: 35%;
+}
+
+#speler {
+    width: 35%;
+}
+
+#kaartenBoekDiv {
+    width: 20%
+}
+
+#dealerKaartenDiv {
+    /* padding: 30px;*/
+}
+
+#kaartenDiv {
+    /*padding: 30px;*/
+}
+
+.leeg {
+    opacity: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#winstPar {
+    font-size: 2rem;
+    margin: 0;
+    position: absolute;
+    text-align: center;
+    top: calc(50vh - 1rem);
+    width: 100%;
+    z-index: 1;
+}
+
+footer {
+    z-index: 2;
+}
+
+.animated {
+    animation-duration: .75s;
+    animation-fill-mode: both;
+}
+
+@keyframes bounceIn {
+    from,
+    20%,
+    40%,
+    60%,
+    80%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+        transform: scale3d(.9, .9, .9);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+        transform: scale3d(.97, .97, .97);
+    }
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.bounceIn {
+    animation-name: bounceIn;
+}
+
+.button,
+.input {
+    padding: .5rem;
+}
