@@ -248,7 +248,7 @@ function clickfunctie() {
             crossDomain: true,
             success: function (json) {
                 $.each(json, function (k, v) {
-                    $("#topspeler").append($('<tr>').attr('class', 'listitem').html("<td>" + v.name + "</td> <td>" + v.rows + "</td><td>" + v.cols + "</td><td>" + v.time + "</td><td>" + v.mines + "</td>"))
+                    $("#topspeler").append($('<tr>').attr('class', 'listitem').html("<td>" + v.name + "</td> <td>" + v.rows + "</td><td>" + v.cols + "</td><td>" + v.time + "</td><td>" + v.mines + "</td><td>"+ v.date+"</td>"))
                 });
             },
 

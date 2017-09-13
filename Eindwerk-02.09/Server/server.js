@@ -37,7 +37,7 @@ app.get("/spelers", function (request, response) {
         console.log("Connected successfully to server");
         console.log(qryObj)
         var collection = db.collection('spelers');
-        collection.find(qryObj, { name: 1, rows: 1, cols: 1, time: 1, mines: 1 }).sort({ time: 1 }).toArray(function (err, docs) {
+        collection.find(qryObj, { name: 1, rows: 1, cols: 1, time: 1, mines: 1 , date: 1}).sort({ time: 1, date: 1 }).toArray(function (err, docs) {
             console.log("Speler document(s) found:");
             response.end(JSON.stringify(docs));
             db.close();
@@ -46,13 +46,16 @@ app.get("/spelers", function (request, response) {
 })
 
 app.post("/spelers", function (request, response) {
+    var date = new Date()
+
     console.log(request.body)
     var event = {
         name: request.body.name,
         rows: +request.body.rows,
         cols: +request.body.cols,
         mines: +request.body.mines,
-        time: +request.body.time
+        time: +request.body.time,
+        date : date
     }
     var mongoClient = require('mongodb').MongoClient;
     var url = 'mongodb://localhost:27017/Minesweeper';
