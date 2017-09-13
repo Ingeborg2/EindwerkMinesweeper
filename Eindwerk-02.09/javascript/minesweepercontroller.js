@@ -338,6 +338,7 @@ function onLeft() {
             setTimeout(function() {
                 $('#rumble').trigger('stopRumble');
             }, 1000);
+            $('#playExplosion').get(0).play();
             $('#tableBody').find('button').attr('disabled', 'disabled');
             $('#btn_pause').css('display', 'none');
             $('.lostOverlay').show();
@@ -350,7 +351,7 @@ function onLeft() {
             $('.winOverlay').show();
             $('#tableBody').find('button').attr('disabled', 'disabled');
             console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
-
+            $('#playTaDa').get(0).play();
         }
     }
 
