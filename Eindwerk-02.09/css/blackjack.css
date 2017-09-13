@@ -18,8 +18,11 @@ body {
     position: fixed;
     height: 150px;
     width: 160px;
-    z-index: 10;
     animation: draaien 20s ease-in-out 5s infinite;
+}
+.planet{
+    position: fixed;
+    z-index: 10;
 }
 
 @keyframes draaien {
@@ -414,6 +417,10 @@ div {
 }
 
 footer {
+    position: fixed;
+    bottom: 100px;
+    left: 50px;
+    right: 50px;
     z-index: 2;
 }
 
