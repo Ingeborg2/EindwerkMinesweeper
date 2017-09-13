@@ -3,6 +3,13 @@
 
 <head>
     <title>Black Jack</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
     <script src="jquery-3.2.1.min.js"></script>
     <script src="javascript/blackjack.js"></script>
     <script src="javascript/blackjackController.js"></script>
@@ -10,52 +17,64 @@
 </head>
 
 <body>
-    <!-- ////////////////////////  Planet  ////////////////////// -->
-    <div class="planet">
-        <img src="images/planet.png" id="planet">
-    </div>
-    <div class="spaceshipdiv">
-        <img src="images/spaceship.png" id="spaceship">
-    </div>
-    <!-- planet afsluiten -->
-    <div class="container">
-        <div id="dealer">
-            <h1>Dealer Cards:</h1>
+    <div class="background">
+        <div class="container">
+            <div id="dealer">
+                <h1>Dealer Cards:</h1>
 
-            <div id="dealerKaartenDiv">
+                <div id="dealerKaartenDiv">
+                </div>
+                <div id="dealerPuntenDiv">
+                    <p id="dealerPuntenPar"></p>
+                </div>
             </div>
-            <div id="dealerPuntenDiv">
-                <p id="dealerPuntenPar"></p>
+            <div id="kaartenBoekDiv">
+                <img id="dealerDekAchterkant" src="images/blackjack_images/cardback.png" alt="achterkant kaartenboek">
+            </div>
+            <div id="speler">
+                <h1>Player Cards:</h1>
+                <div id="kaartenDiv">
+                </div>
+                <p id="puntenPar"></p>
             </div>
         </div>
-        <div id="kaartenBoekDiv">
-            <img id="dealerDekAchterkant" src="images/blackjack_images/cardback.png" alt="achterkant kaartenboek">
-        </div>
-        <div id="speler">
-            <h1>Player Cards:</h1>
-            <div id="kaartenDiv">
+
+        <p id="winstPar" class="animated"></p>
+
+
+        <footer>
+            <div>
+                <input type="button" id="btnGeefKaart" name="btnGeefKaart" value="Geef kaart" class="button btn btn-danger" disabled>
+                <input type="button" id="btnSchud" name="btnschud" value="Stoppen" class="button btn btn-danger" disabled>
             </div>
-            <p id="puntenPar"></p>
+            <form class="form-inline">
+                <div id="Cash">
+                    <div class="form-group">
+                        <label for="Stack">Stack: </label>
+                        <input type="text" id="stackVeld" name="stackVeld" class="input form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="inzetVeld">Inzet: </label>
+                        <input type="number" id="inzetVeld" name="inzetVeld" placeHolder="Inzet" value="10" class="input form-control">
+                    </div>
+                    <input type="button" id="btnInzet" name="btnInzet" value="Plaats inzet" class="button btn btn-danger">
+                    <p id="inzetInfo"></p>
+                </div>
+            </form>
+        </footer>
+        <!-- ////////////////////////  Planet  ////////////////////// -->
+        <div class="planet">
+            <img src="images/planet.png" id="planet">
         </div>
+        <div class="spaceshipdiv">
+            <img src="images/spaceship.png" id="spaceship">
+        </div>
+        <!-- planet afsluiten -->
     </div>
 
-    <p id="winstPar" class="animated"></p>
 
-
-    <footer>
-        <div>
-            <input type="button" id="btnGeefKaart" name="btnGeefKaart" value="Geef kaart" class="button" disabled>
-            <input type="button" id="btnSchud" name="btnschud" value="Stoppen" class="button" disabled>
-        </div>
-        <div id="Cash">
-            <label for="Stack">Stack: </label><input type="text" id="stackVeld" name="stackVeld" class="input" disabled>
-            <label for="inzetVeld">Inzet: </label><input type="number" id="inzetVeld" name="inzetVeld" placeHolder="Inzet"
-                value="10" class="input">
-            <input type="button" id="btnInzet" name="btnInzet" value="Plaats inzet" class="button">
-            <p id="inzetInfo"></p>
-        </div>
-    </footer>
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 
 </body>
 

@@ -10,7 +10,7 @@ window.onload = function() {
         var randClass = Math.floor(Math.random() * 10);
         var randLeft = Math.floor(Math.random() * document.body.clientWidth);
         var randTop = Math.floor(Math.random() * height);
-        $('.background').append('<div class="star f' + randClass + '" style=" z-index: 0; top:' + randTop + 'px;left:' + randLeft + 'px;"></div>');
+        $('body').append('<div class="star f' + randClass + '" style=" z-index: 0; top:' + randTop + 'px;left:' + randLeft + 'px;"></div>');
     }
     document.getElementById("btnGeefKaart").onclick = geefKaart;
     document.getElementById("btnInzet").onclick = inzetten;
