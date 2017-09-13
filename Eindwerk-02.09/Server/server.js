@@ -15,7 +15,6 @@ app.all('/*', function (req, res, next) {
     next();
 });
 
-
 app.get("/spelers", function (request, response) {
     var mongoClient = require('mongodb').MongoClient;
     var url = 'mongodb://localhost:27017/Minesweeper';
