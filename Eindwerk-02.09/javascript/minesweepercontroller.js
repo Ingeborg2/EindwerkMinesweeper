@@ -383,7 +383,8 @@ function onRight() {
     var y = id.substr(n + 1)
     board.onRightClick(x, y)
     $('#undiscoveredMines').html(board.undiscovered())
-    $('#' + id).text(board.board[x][y].flagState[board.board[x][y].rightClick])
+    // $('#' + id).text(board.board[x][y].flagState[board.board[x][y].rightClick])
+    $('#' + id).css('background-image', 'url('+ board.board[x][y].flagState[board.board[x][y].rightClick]+')')
     if (board.keepPlaying == false) {
         // if (board.gameEnd == 'Boom!'){
         //     timeOnGameStop()

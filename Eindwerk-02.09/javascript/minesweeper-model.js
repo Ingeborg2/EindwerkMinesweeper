@@ -77,7 +77,7 @@ Board.prototype.checkWin = function(){
     }
 }
 
-FieldObj.prototype.flagState = [' ', 'V', '?'];
+FieldObj.prototype.flagState = [' ', 'images/questionMark.png', 'images/questionMark.png'];
 
 FieldObj.prototype.onLeftClick = function() {
     this.leftClick = true;
