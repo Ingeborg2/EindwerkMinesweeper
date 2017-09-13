@@ -304,6 +304,24 @@ function onLeft() {
                     $('#' + i + '-' + j).attr({ class: 'turned', disabled: true })
                 } else {
                     $('#' + i + '-' + j).text(board.board[i][j].mineNeighbours)
+                    switch (true){
+                        case $('#' + i + '-' + j).text() == 1 : $('#' + i + '-' + j).css('color', 'blue');
+                            break;
+                        case $('#' + i + '-' + j).text() == 2 : $('#' + i + '-' + j).css('color', 'green');
+                            break;
+                        case $('#' + i + '-' + j).text() == 3 : $('#' + i + '-' + j).css('color', 'yellow');
+                            break;
+                        case $('#' + i + '-' + j).text() == 4 : $('#' + i + '-' + j).css('color', 'orange');
+                            break;
+                        case $('#' + i + '-' + j).text() == 5 : $('#' + i + '-' + j).css('color', 'pink');
+                            break;
+                        case $('#' + i + '-' + j).text() == 6 : $('#' + i + '-' + j).css('color', 'purple');
+                            break;
+                        case $('#' + i + '-' + j).text() == 7 : $('#' + i + '-' + j).css('color', 'brown');
+                            break;
+                        case $('#' + i + '-' + j).text() == 8 : $('#' + i + '-' + j).css('color', 'red');
+                            break;
+                    }
                     $('#' + i + '-' + j).attr({ class: 'turned', disabled: true })
                 }
             }
@@ -311,9 +329,9 @@ function onLeft() {
     }
     if (board.keepPlaying == false) {
         if (board.gameEnd == 'Boom!') {
-            timeOnGameStop()
+            timeOnGameStop();
             $('.atagBox1').hide();
-            $('.middleBtns').hide()
+            $('.middleBtns').hide();
             $('.atagBox2').addClass('col-md-offset-5');
             // $('#btn_pause').hide()
             $('#rumble').trigger('startRumble');
@@ -321,15 +339,16 @@ function onLeft() {
                 $('#rumble').trigger('stopRumble');
             }, 1000);
             $('#tableBody').find('button').attr('disabled', 'disabled');
-            $('#btn_pause').css('display', 'none')
-            $('.lostOverlay').show()
-            console.log('U heeft op een mijn geklikt, u bent verloren!')
+            $('#btn_pause').css('display', 'none');
+            $('.lostOverlay').show();
+            console.log('U heeft op een mijn geklikt, u bent verloren!');
         } else {
             timeOnGameStop()
             $('#frm').validate()
-            $('.submitBtn').css('display', 'inline')
-            $('#btn_pause').css('display', 'none')
-            $('.winOverlay').show()
+            $('.submitBtn').css('display', 'inline');
+            $('#btn_pause').css('display', 'none');
+            $('.winOverlay').show();
+            $('#tableBody').find('button').attr('disabled', 'disabled');
             console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
 
         }
