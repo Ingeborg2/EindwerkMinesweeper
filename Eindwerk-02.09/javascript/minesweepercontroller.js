@@ -30,23 +30,32 @@ $(document).ready(function() {
 
         ////////////////MINESWEEPER GENERATE/////////////////
         $('#btn_startGame').click(function() {
-            if (form.valid()) {
-                saveGameConfigInLocalStorage();
-                vulTabel();
-                $('.winOverlay').hide();
-                $('.lostOverlay').hide();
-                $('#undiscoveredMines').html(board.undiscovered())
-                $('.clockMines').css('display', 'block');
-                $('.formbutton').hide();
-                $('.topplayers').hide();
-                $('#game').show();
-                $('.knoppendiv').show();
-                $('.atagBox1').css('visibility', 'visible');
-                $('.atagBox2').css('visibility', 'visible');
-                clearInterval(stopTimer);
-                resetTimer();
-                stopTimer = setInterval(countTime, 1000);
+            if ($('#numberOfMines').val() <= ($('#numberOfCols').val() * $('#numberOfRows').val())-1 ){
+                form.validate()
+                if (form.valid()) {
+                    saveGameConfigInLocalStorage();
+                    vulTabel();
+                    $('#clock').hide()
+                    $('.winOverlay').hide();
+                    $('.lostOverlay').hide();
+                    $('#undiscoveredMines').html(board.undiscovered())
+                    $('.clockMines').css('display', 'block');
+                    $('.formbutton').hide();
+                    $('.topplayers').hide();
+                    $('#game').show();
+                    $('.knoppendiv').show();
+                    $('.atagBox1').css('visibility', 'visible');
+                    $('.atagBox2').css('visibility', 'visible');
+                    clearInterval(stopTimer);
+                    resetTimer();
+                    stopTimer = setInterval(countTime, 1000);
+                }
+            } else {
+                console.log('teveel mijnen')
+                $('#numberOfMines').val('');
+                $('#numberOfMines').attr('placeholder', 'too many mines').css('color','red');
             }
+            
         })
         $('#tableBody').bind('contextmenu', function(e) { return false })
 
@@ -89,6 +98,9 @@ $(document).ready(function() {
 
         $('#reconfig').click(function() {
             $('#game').css('display', 'none');
+            $('#gameInterrupted').hide();
+            $('#btn_restart').hide();
+            $('#btn_pause').hide();
             $('.formbutton').show();
             $('.topplayers').show();
             $('.clockMines').hide();
@@ -98,8 +110,11 @@ $(document).ready(function() {
         $('#newGame').click(function() {
             resetTimer();
             if (form.valid()) {
+                $('#btn_restart').hide();
+                $('#btn_pause').hide();
                 $('.winOverlay').hide();
                 $('.lostOverlay').hide();
+                $('#gameInterrupted').hide();
                 $('.atagBox1').show();
                 $('#btn2').hide()
                 $('.middleBtns').show()
@@ -108,6 +123,7 @@ $(document).ready(function() {
                 vulTabel();
                 $('#undiscoveredMines').html(board.undiscovered())
                 $('.clockMines').css('display', 'block');
+                $('#clock').hide()
                 $('.formbutton').hide();
                 $('.topplayers').hide();
                 $('#game').show();
@@ -351,7 +367,7 @@ function onLeft() {
             $('#btn_pause').css('display', 'none');
             $('.winOverlay').show();
             $('#tableBody').find('button').attr('disabled', 'disabled');
-            console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
+            console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!');
             $('#playTaDa').get(0).play();
         }
     }
@@ -375,10 +391,11 @@ function onRight() {
         //     console.log('U heeft op een mijn geklikt, u bent verloren!')
         // } else {
         timeOnGameStop()
-        $('#frm').validate()
-        $('.submitBtn').css('display', 'inline')
-        $('#btn_pause').css('display', 'none')
-        $('.winOverlay').show()
+        $('#frm').validate();
+        $('.submitBtn').css('display', 'inline');
+        $('#btn_pause').css('display', 'none');
+        $('.winOverlay').show();
+        $('#playTaDa').get(0).play();
         console.log('U heeft alle mijnen opgeruimd, u bent gewonnen!')
     }
 
@@ -434,6 +451,7 @@ function timeOnGameStop() {
 function countTime() {
     if (board.gameStart) {
         counter++;
+        $('#clock').show();
         $('#clock').html(showCounterInMinutesAndSeconds(counter));
         $('#btn_pause').show();
 
