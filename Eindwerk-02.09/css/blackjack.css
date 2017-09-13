@@ -332,38 +332,36 @@ body {
     /* z-index: 0; */
 }
 
-
-  #spaceship {
+#spaceship {
     height: auto;
     width: 3%;
     position: absolute;
-    transform: rotate(-45deg);
-    /* display: none; */
-    right: 0px;
-    top: 500px;
+    transform: rotate(-70deg);
     opacity: 0;
+    z-index: -1;
   }
-
-.spaceship {
-    animation: vliegen 10s ease-in-out 10s forwards;
+  
+  .spaceship {
+    animation: vliegen 12s ease-in-out 3s infinite;
   }
   
   @keyframes vliegen {
     0% {
-        display: block;
-        opacity: 0;
-      right:0px;
-      top: 500px;
+      right: 0px;
+      bottom: 20px;
     }
-    25%{
+    10% {
+        opacity: 0.5;
+    }
+    40% {
         opacity: 1;
     }
     100%{
-        opacity:1;
-      right: 500px;
-      top: -300px;
+      right: 1800px;
+      bottom: 600px;
     }
   }
+
 
 
 img {
@@ -389,12 +387,15 @@ div {
 }
 
 #dealerKaartenDiv {
+    z-index: 100;
     /* padding: 30px;*/
 }
 
 #kaartenDiv {
+    z-index: 100;
     /*padding: 30px;*/
 }
+
 
 .leeg {
     opacity: 0;
@@ -413,7 +414,7 @@ div {
     text-align: center;
     top: calc(50vh - 1rem);
     width: 100%;
-    z-index: 1;
+    z-index: -2;
 }
 
 footer {

@@ -18,6 +18,8 @@ window.onload = function() {
     document.getElementById("stackVeld").value = 200;
     kaartboek.schud();
 
+    $("#spaceship").addClass('spaceship')
+
 }
 
 function geefKaart() {
