@@ -263,10 +263,11 @@ function clickfunctie() {
             url: "http://127.0.0.1:8081/spelers" + querystring,
             dataType: "json", //parse returned JSON
             crossDomain: true,
-            success: function(json) {
-                $.each(json, function(k, v) {
-                    $("#topspeler").append($('<tr>').attr('class', 'listitem').html("<td>" + v.name + "</td> <td>" + v.rows + "</td><td>" + v.cols + "</td><td>" + v.time + "</td><td>" + v.mines + "</td>"))
-                });
+            success: function (json) {
+                $.each(json, function (k, v) {
+                    for(var i = 0; i<v.score.length;i++){
+                    $("#topspeler").append($('<tr>').attr('class', 'listitem').html("<td>" + v.score[i].name + "</td> <td>" + v.rows + "</td><td>" + v.cols + "</td><td>" + v.score[i].time + "</td><td>" + v.mines + "</td><td>"+ v.score[i].date+"</td>"))
+                }});
             },
 
             error: function(XMLHttpRequest, textStatus, errorThrown) {
