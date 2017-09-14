@@ -13,7 +13,10 @@ table{
   height: 30px;
   width: 30px;
   background-color: gold;
-  border: 1px solid black
+  border: 1px solid black;
+  box-shadow: none;
+  outline: none;
+  vertical-align: top;
 }
 .turned {
   height: 30px;

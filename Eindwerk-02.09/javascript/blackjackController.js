@@ -18,6 +18,8 @@ window.onload = function() {
     document.getElementById("stackVeld").value = 200;
     kaartboek.schud();
 
+    $("#spaceship").addClass('spaceship')
+
 }
 
 function geefKaart() {
@@ -44,9 +46,11 @@ function geefKaart() {
         document.getElementById("btnGeefKaart").disabled = true;
         // punten.innerHTML = "U heeft " + hand.punten() + ".";
         verliesSchrijven();
-        document.getElementById("btnSchud").disabled = false;
+        stoppenEnSchudden();
+        document.getElementById("btnSchud").disabled = true;
     }
     teller++
+    console.log(teller)
 }
 
 function stoppenEnSchudden() {
@@ -139,6 +143,7 @@ function winstSchrijven() {
     var winst = document.getElementById("winstPar");
     winst.classList.add('bounceIn');
     winst.innerHTML = "U krijgt uw inzet " + hand.factor() + " keer terug.";
+    $('#playTaDa').get(0).play();
 }
 
 function verliesSchrijven() {

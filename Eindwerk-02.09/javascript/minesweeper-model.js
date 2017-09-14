@@ -65,9 +65,9 @@ Board.prototype.checkWin = function(){
         for (var y = 0; y < this.cols; y++) {
             if (this.board[x][y].leftClick == true){
                 countLeftClicks++
-            } else if (this.board[x][y].flagState[this.board[x][y].rightClick] == 'V'){
+            } else if (this.board[x][y].flagState[this.board[x][y].rightClick] == 'images/red-flag-icone.png'){
                 countFlags++
-            } 
+            }
         }
     }
     if ((this.rows*this.cols)-this.mines == countLeftClicks && countFlags == this.mines){
@@ -77,7 +77,7 @@ Board.prototype.checkWin = function(){
     }
 }
 
-FieldObj.prototype.flagState = [' ', 'V', '?'];
+FieldObj.prototype.flagState = ['images/blank256.png', 'images/red-flag-icone.png', 'images/questionMark2.png'];
 
 FieldObj.prototype.onLeftClick = function() {
     this.leftClick = true;
