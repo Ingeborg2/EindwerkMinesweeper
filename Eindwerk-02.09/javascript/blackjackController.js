@@ -50,7 +50,7 @@ function geefKaart() {
         document.getElementById("btnSchud").disabled = true;
     }
     teller++
-    console.log(teller)
+    $('#playClick').get(0).play();
 }
 
 function stoppenEnSchudden() {
@@ -150,4 +150,5 @@ function verliesSchrijven() {
     var winst = document.getElementById("winstPar");
     winst.classList.add('bounceIn');
     winst.innerHTML = "Helaas, u hebt verloren, u bent uw inzet kwijt";
+    $('#playLost').get(0).play();
 }
