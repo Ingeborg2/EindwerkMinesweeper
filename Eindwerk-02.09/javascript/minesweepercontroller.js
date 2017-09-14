@@ -367,22 +367,22 @@ function onLeft() {
                             $('#' + i + '-' + j).css({ color: 'green', verticalAlign: 'top' });
                             break;
                         case $('#' + i + '-' + j).text() == 3:
-                            $('#' + i + '-' + j).css('color', 'yellow');
+                            $('#' + i + '-' + j).css({ color: 'yellow', verticalAlign: 'top' });
                             break;
                         case $('#' + i + '-' + j).text() == 4:
-                            $('#' + i + '-' + j).css('color', 'orange');
+                            $('#' + i + '-' + j).css({ color: 'orange', verticalAlign: 'top' });
                             break;
                         case $('#' + i + '-' + j).text() == 5:
-                            $('#' + i + '-' + j).css('color', 'pink');
+                            $('#' + i + '-' + j).css({ color: 'pink', verticalAlign: 'top' });
                             break;
                         case $('#' + i + '-' + j).text() == 6:
-                            $('#' + i + '-' + j).css('color', 'purple');
+                            $('#' + i + '-' + j).css({ color: 'purple', verticalAlign: 'top' });
                             break;
                         case $('#' + i + '-' + j).text() == 7:
-                            $('#' + i + '-' + j).css('color', 'brown');
+                            $('#' + i + '-' + j).css({ color: 'brown', verticalAlign: 'top' });
                             break;
                         case $('#' + i + '-' + j).text() == 8:
-                            $('#' + i + '-' + j).css('color', 'red');
+                            $('#' + i + '-' + j).css({ color: 'red', verticalAlign: 'top' });
                             break;
                     }
                     $('#' + i + '-' + j).attr({ class: 'turned', disabled: true })
