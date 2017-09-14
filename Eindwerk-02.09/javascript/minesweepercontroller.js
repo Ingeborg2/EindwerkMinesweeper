@@ -299,7 +299,7 @@ function clickfunctie() {
     function createRowsForShowable(v) {
         var result = "";
         for (var i = 0; i < v.score.length; i++) {
-            result += "<tr><td>" + v.score[i].name + "</td> <td>" + v.score[i].time + "</td><td>" + v.score[i].date + "</td><td>&nbsp;</td></tr>"
+            result += "<td>" + v.score[i].name + "</td> <td>" + v.score[i].time + " sec" + "</td><td>" + v.score[i].date + "</td><td>&nbsp;</td></tr>"
         }
         return result;
     }
