@@ -322,9 +322,11 @@ function onLeft() {
                 } else {
                     $('#' + i + '-' + j).text(board.board[i][j].mineNeighbours)
                     switch (true){
-                        case $('#' + i + '-' + j).text() == 1 : $('#' + i + '-' + j).css('color', 'blue');
+                        case $('#' + i + '-' + j).text() == '' : $('#' + i + '-' + j).css({verticalAlign: 'top'});
                             break;
-                        case $('#' + i + '-' + j).text() == 2 : $('#' + i + '-' + j).css('color', 'green');
+                        case $('#' + i + '-' + j).text() == 1 : $('#' + i + '-' + j).css({color: 'blue', verticalAlign: 'top'});
+                            break;
+                        case $('#' + i + '-' + j).text() == 2 : $('#' + i + '-' + j).css({color: 'green', verticalAlign: 'top'});
                             break;
                         case $('#' + i + '-' + j).text() == 3 : $('#' + i + '-' + j).css('color', 'yellow');
                             break;
@@ -384,7 +386,8 @@ function onRight() {
     board.onRightClick(x, y)
     $('#undiscoveredMines').html(board.undiscovered())
     // $('#' + id).text(board.board[x][y].flagState[board.board[x][y].rightClick])
-    $('#' + id).css('background-image', 'url('+ board.board[x][y].flagState[board.board[x][y].rightClick]+')')
+    // $('#' + id).css('background-image', 'url('+ board.board[x][y].flagState[board.board[x][y].rightClick]+')')
+    $('#' + id).html("<img src='"+ board.board[x][y].flagState[board.board[x][y].rightClick]+"' style='height: 20px; width: 15px; margin-right: 4px; margin-bottom: 2px; vertical-align: top;'>")
     if (board.keepPlaying == false) {
         // if (board.gameEnd == 'Boom!'){
         //     timeOnGameStop()
