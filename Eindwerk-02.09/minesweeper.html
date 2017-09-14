@@ -44,15 +44,15 @@
                         </div>
                         <div class="col-md-2 form-group">
                             <label for="numberOfCols">Columns: </label>
-                            <input type="number" name="cols" id="numberOfCols" min="1" required class="form-control" />
+                            <input type="number" name="cols" id="numberOfCols" min="1" max="38" required class="form-control" />
                         </div>
                         <div class="col-md-2 form-group">
                             <label for="numberOfRows">Rows: </label>
-                            <input type="number" name="rows" id="numberOfRows" min="1" required class="form-control" />
+                            <input type="number" name="rows" id="numberOfRows" min="1" max="15" required class="form-control" />
                         </div>
                         <div class="col-md-2 form-group">
                             <label for="numberOfMines">Mines:</label>
-                            <input type="number" name="mines" id="numberOfMines" min="1" required class="form-control" />
+                            <input type="number" name="mines" id="numberOfMines" min=1 required class="form-control" />
                         </div>
                         <div class="col-md-2 form-group">
                             <input type="hidden" name="time" id="time" value=0 class="form-control">
@@ -70,7 +70,7 @@
                         <span class="clocktimetext">Time : </span>
                         <span id="clock">
 
-                            </span>
+                        </span>
                     </div>
 
                     <!-- ////////// UNDISCOVERED MINES /////////////////-->
@@ -114,7 +114,7 @@
                     <div id="topplayers">
                         <table id="topspeler" style="display: none" class="table table-curved table responsive">
                             <thead>
-                                <tr>
+                                <tr class="heading">
                                     <td>Name : </td>
                                     <td>Columns : </td>
                                     <td>Rows : </td>
@@ -131,7 +131,21 @@
                         <div class="knoppendiv">
                             <div class="col-md-2 col-md-offset-2 atagBox1">
                                 <!-- <input type="button" id="reconfig" value="RECONFIGURATE" class="btn btn-warning"> -->
-                                <input type="button" class="atag" id="reconfig" value="RECONFIG">
+                                <input type="button" class="atag" id="reconfig" value="RECONFIG"> =======
+                                <!-- <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"> -->
+                                <table id="topspeler" style="display: none" class="table table-curved table responsive">
+                                    <tr>
+                                        <td class="heading panel-title">Name : </td>
+                                        <td class="heading panel-title">columns : </td>
+                                        <td class="heading panel-title">Rows : </td>
+                                        <td class="heading panel-title">Time : </td>
+                                        <td class="heading panel-title">Mines : </td>
+                                        <td class="heading panel-title">Date : </td>
+                                    </tr>
+                                </table>
+                                >>>>>>> 8e6c301dbf6552b0cd92cda79209b2205d2376b2
                             </div>
                             <div class="col-md-4 middleBtns">
                                 <input type="button" id="btn_pause" value="PAUSE" class="btn btn-danger" hidden>

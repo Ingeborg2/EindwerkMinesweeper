@@ -5,7 +5,7 @@ $(document).ready(function () {
         window.location.href = "minesweeper.html";
     })
     $('#blackJackBtn').click(function () {
-        window.location.href = "minesweeper.html";
+        window.location.href = "blackjack.html";
     })
     var height = Math.max(document.body.scrollHeight, document.body.offsetHeight,
         document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
@@ -17,6 +17,9 @@ $(document).ready(function () {
     
     }
     $("#spaceship").addClass('spaceship')
+    $('.icon').mouseenter(function(){
+        $('#playElec').get(0).play();
+    })
 })
 
 // $(document).ready(function () {
