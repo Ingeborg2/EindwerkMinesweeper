@@ -387,7 +387,7 @@ function onRight() {
     $('#undiscoveredMines').html(board.undiscovered())
     // $('#' + id).text(board.board[x][y].flagState[board.board[x][y].rightClick])
     // $('#' + id).css('background-image', 'url('+ board.board[x][y].flagState[board.board[x][y].rightClick]+')')
-    $('#' + id).html("<img src='"+ board.board[x][y].flagState[board.board[x][y].rightClick]+"' style='height: 20px; width: 15px; margin-right: 4px; margin-bottom: 2px; vertical-align: top;'>")
+    $('#' + id).html("<img src='"+ board.board[x][y].flagState[board.board[x][y].rightClick]+"' style='height: 20px; width: 15px; vertical-align: top;'>")
     if (board.keepPlaying == false) {
         // if (board.gameEnd == 'Boom!'){
         //     timeOnGameStop()
