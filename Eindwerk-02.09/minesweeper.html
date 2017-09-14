@@ -111,7 +111,47 @@
                         <input type="button" id="btn_players" value="CHECK TOP PLAYERS" class="btn btn-danger">
                     </div>
 
-                    <!-- <div class="panel-group">
+                    <!--<div id="topplayers">
+                        <table id="topspeler" style="display: none" class="table table-curved table responsive">
+                            <thead>
+                                <tr class="heading">
+                                    <td>Name : </td>
+                                    <td>Columns : </td>
+                                    <td>Rows : </td>
+                                    <td>Time : </td>
+                                    <td>Mines : </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>-->
+
+                    <!-- //////////// OPENKLAPBARE TABEL  /////////////////////-->
+
+                    <div id="topPlayerOverview">
+                        <table id="topspeler" style=" display: none " class="table table-curved table responsive">
+                            <thead>
+                                <tr class="heading">
+                                    <th class="text-center">Columns : </th>
+                                    <th class="text-center">Rows : </th>
+                                    <th class="text-center">Mines : </th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody2">
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- ////////////// Spelknoppen ///////////// -->
+                    <div class="row">
+                        <div class="knoppendiv">
+                            <div class="col-md-2 col-md-offset-2 atagBox1">
+                                <!-- <input type="button" id="reconfig" value="RECONFIGURATE" class="btn btn-warning"> -->
+                                <input type="button" class="atag" id="reconfig" value="RECONFIG"> =======
+                                <!-- <div class="panel-group">
                         <div class="panel panel-default">
                             <div class="panel-heading"> -->
                                 <table id="topspeler" style="display: none" class="table table-curved table responsive">
@@ -124,39 +164,33 @@
                                         <td class="heading panel-title">Date : </td>
                                     </tr>
                                 </table>
+                                >>>>>>> 8e6c301dbf6552b0cd92cda79209b2205d2376b2
                             </div>
-                            <!-- ////////////// Spelknoppen ///////////// -->
-                            <div class="row">
-                                <div class="knoppendiv">
-                                    <div class="col-md-2 col-md-offset-2 atagBox1">
-                                        <!-- <input type="button" id="reconfig" value="RECONFIGURATE" class="btn btn-warning"> -->
-                                        <input type="button" class="atag" id="reconfig" value="RECONFIG">
-                                    </div>
-                                    <div class="col-md-4 middleBtns">
-                                        <input type="button" id="btn_pause" value="PAUSE" class="btn btn-danger" hidden>
-                                        <input type="button" id="btn_restart" value="CONTINUE" class="btn btn-danger" hidden>
-                                        <!-- <div class="buttonhide1"> -->
-                                        <input type="submit" id="btn2" value="SUBMIT SCORE" onclick="timeOnGameStop()" class="submitBtn btn btn-danger">
-                                    </div>
-                                    <div class="col-md-2 atagBox2">
-                                        <!-- <input type="button" id="newgame" value="NEW GAME" class="btn btn-warning"> -->
-                                        <input type="button" class="atag" value="NEW GAME" id="newGame">
-                                    </div>
-                                </div>
+                            <div class="col-md-4 middleBtns">
+                                <input type="button" id="btn_pause" value="PAUSE" class="btn btn-danger" hidden>
+                                <input type="button" id="btn_restart" value="CONTINUE" class="btn btn-danger" hidden>
+                                <!-- <div class="buttonhide1"> -->
+                                <input type="submit" id="btn2" value="SUBMIT SCORE" onclick="timeOnGameStop()" class="submitBtn btn btn-danger">
                             </div>
-                            <!-- Spelknoppen afsluiten -->
+                            <div class="col-md-2 atagBox2">
+                                <!-- <input type="button" id="newgame" value="NEW GAME" class="btn btn-warning"> -->
+                                <input type="button" class="atag" value="NEW GAME" id="newGame">
+                            </div>
                         </div>
-                        <!-- container afsluiten -->
                     </div>
-                    <!-- wrapper afsluiten -->
+                    <!-- Spelknoppen afsluiten -->
                 </div>
-                <!-- background afsluiten -->
+                <!-- container afsluiten -->
+            </div>
+            <!-- wrapper afsluiten -->
+        </div>
+        <!-- background afsluiten -->
 
-                <!-- ////////////// Sound Effects ///////////// -->
-                <audio id="playExplosion" src="sounds/Explosion.mp3" type="audio/mpeg"></audio>
-                <audio id="playTaDa" src="sounds/Ta-da-orchestra-fanfare.mp3" type="audio/mpeg"></audio>
+        <!-- ////////////// Sound Effects ///////////// -->
+        <audio id="playExplosion" src="sounds/Explosion.mp3" type="audio/mpeg"></audio>
+        <audio id="playTaDa" src="sounds/Ta-da-orchestra-fanfare.mp3" type="audio/mpeg"></audio>
 
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 
 </html>

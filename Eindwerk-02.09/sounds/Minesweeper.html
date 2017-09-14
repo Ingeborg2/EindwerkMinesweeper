@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)file:///C:/Users/Gebruiker/EINDWERKMINESWEEPER3/EindwerkMinesweeper/Eindwerk-02.09/minesweeper.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="./Minesweeper_files/css" rel="stylesheet">
+    <link href="./Minesweeper_files/css(1)" rel="stylesheet">
+    <script src="./Minesweeper_files/jquery-3.2.1.min.js.download"></script>
+    <script src="./Minesweeper_files/jquery.validate.min.js.download"></script>
+    <script src="./Minesweeper_files/additional-methods.min.js.download"></script>
+    <script type="text/javascript" src="./Minesweeper_files/jquery.jrumble.1.3.min.js.download"></script>
+    <link rel="stylesheet" href="./Minesweeper_files/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Minesweeper_files/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="./Minesweeper_files/minesweeperspel.css">
+    <link rel="stylesheet" type="text/css" href="./Minesweeper_files/minesweeper.css">
+    <script src="./Minesweeper_files/minesweeper-model.js.download"></script>
+    <script src="./Minesweeper_files/minesweepercontroller.js.download"></script>
+    <title>Minesweeper</title>
+</head>
+
+<body>
+    <div class="background" id="rumble">
+
+        <!-- ////////////////////////  Planet  ////////////////////// -->
+        <div class="planet">
+            <img src="./Minesweeper_files/planet.png" id="planet">
+        </div>
+        <div class="spaceshipdiv">
+            <img src="./Minesweeper_files/spaceship.png" id="spaceship" class="spaceship">
+        </div>
+        <!-- planet afsluiten -->
+        <!-- /////////// pagina inhoud ///////// -->
+        <div class="wrapperdiv">
+            <div class="container text-center">
+                <!-- ////////////////////////  FORM  ///////////////////////// -->
+                <div class="row formbutton">
+                    <form method="POST" action="http://127.0.0.1:8081/spelers" id="frm" novalidate="novalidate">
+                        <div class="col-md-2 col-md-offset-2 form-group">
+                            <label for="naamSpeler">Player: </label>
+                            <input type="text" name="name" id="naamSpeler" minlength="1" required="" class="form-control error" aria-required="true"><label id="naamSpeler-error" class="error" for="naamSpeler">This field is required.</label>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label for="numberOfCols">Columns: </label>
+                            <input type="number" name="cols" id="numberOfCols" min="1" max="38" required="" class="form-control error" aria-required="true"><label id="numberOfCols-error" class="error" for="numberOfCols">This field is required.</label>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label for="numberOfRows">Rows: </label>
+                            <input type="number" name="rows" id="numberOfRows" min="1" max="15" required="" class="form-control error" aria-required="true"><label id="numberOfRows-error" class="error" for="numberOfRows">This field is required.</label>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label for="numberOfMines">Mines:</label>
+                            <input type="number" name="mines" id="numberOfMines" min="1" required="" class="form-control error" aria-required="true"><label id="numberOfMines-error" class="error" for="numberOfMines">This field is required.</label>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <input type="hidden" name="time" id="time" value="0" class="form-control">
+                        </div>
+                    </form>
+                    <input type="button" id="btn_startGame" value="START GAME" class="btn btn-danger">
+                </div>
+                <!-- afluiten form -->
+
+                <!-- /////////////////////////// MINESWEEPER ///////////////////////////////////-->
+
+                <!--///////////// CLOCK /////////////-->
+                <div class="row clockMines">
+                    <div class="col-md-6">
+                        <span class="clocktimetext">Time : </span>
+                        <span id="clock">
+
+                        </span>
+                    </div>
+
+                    <!-- ////////// UNDISCOVERED MINES /////////////////-->
+                    <div class="col-md-6">
+                        <span class="clocktimetext">Mines : </span>
+                        <span id="undiscoveredMines">
+                                
+                            </span>
+                    </div>
+
+                </div>
+
+                <!-- //////// Spelbord /////// -->
+                <div class="row gamediv">
+                    <!-- ////////// pauze modus /////// -->
+                    <div id="gameInterrupted" class="col-md-12">
+                        <img src="./Minesweeper_files/pause.png" alt="pauze" id="pauseimage">
+                    </div>
+
+                    <!-- /////////// spel modus ///////// -->
+                    <div id="game" class="col-md-12 text-center">
+                        <img src="./Minesweeper_files/win.png" alt="You won!" class="winOverlay" hidden="">
+                        <img src="./Minesweeper_files/bombTemp.png" alt="You lost!" class="lostOverlay" hidden="">
+                        <table>
+                            <tbody id="tableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- spelbord afsluiten -->
+
+
+                <!-- //////////// TOPSPELERS  /////////////////////-->
+
+                <div class="topplayers">
+                    <div>
+                        <input type="button" id="btn_players" value="CHECK TOP PLAYERS" class="btn btn-danger">
+                    </div>
+
+                    <!--<div id="topplayers">
+                        <table id="topspeler" style="display: none" class="table table-curved table responsive">
+                            <thead>
+                                <tr class="heading">
+                                    <td>Name : </td>
+                                    <td>Columns : </td>
+                                    <td>Rows : </td>
+                                    <td>Time : </td>
+                                    <td>Mines : </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>-->
+
+                    <!-- //////////// OPENKLAPBARE TABEL  /////////////////////-->
+
+                    <div id="topPlayerOverview">
+                        <table id="topspeler" style="" class="table table-curved table responsive tableopacity">
+                            <thead>
+                                <tr class="heading">
+                                    <th class="text-center">Columns : </th>
+                                    <th class="text-center">Rows : </th>
+                                    <th class="text-center">Mines : </th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody2">
+
+                            <tr id="package0" class="accordion-toggle listitem" data-toggle="collapse" data-parent="#topPlayerOverview" data-target=".packageDetails0" aria-expanded="true"><td>15</td><td>15</td><td>1</td><td><i class="indicator glyphicon pull-right glyphicon-chevron-up"></i></td> </tr><tr class="listitem item"><td colspan="4" class="hiddenRow"><div class="accordion-body packageDetails0 collapse in" id="accordion0" aria-expanded="true" style=""><table class="showable-table-part"><tbody><tr><td>Kristof</td> <td>2</td><td>2017-8-3 15:22:46</td><td>&nbsp;</td></tr><tr><td>Kristof</td> <td>3</td><td>2017-8-3 15:22:32</td><td>&nbsp;</td></tr></tbody></table></div></td></tr><tr id="package1" class="accordion-toggle listitem collapsed" data-toggle="collapse" data-parent="#topPlayerOverview" data-target=".packageDetails1" aria-expanded="false"><td>10</td><td>10</td><td>1</td><td><i class="indicator glyphicon pull-right glyphicon-chevron-up"></i></td> </tr><tr class="listitem item"><td colspan="4" class="hiddenRow"><div class="accordion-body packageDetails1 collapse in" id="accordion1" aria-expanded="true" style=""><table class="showable-table-part"><tbody><tr><td>Maxime</td> <td>1</td><td>2017-8-3 15:20:38</td><td>&nbsp;</td></tr><tr><td>Maxime</td> <td>1</td><td>2017-8-3 15:22:3</td><td>&nbsp;</td></tr><tr><td>Ingeborg</td> <td>2</td><td>2017-8-3 15:23:21</td><td>&nbsp;</td></tr></tbody></table></div></td></tr></tbody>
+                        </table>
+                    </div>
+
+                    <!-- ////////////// Spelknoppen ///////////// -->
+                    <div class="row">
+                        <div class="knoppendiv">
+                            <div class="col-md-2 col-md-offset-2 atagBox1">
+                                <!-- <input type="button" id="reconfig" value="RECONFIGURATE" class="btn btn-warning"> -->
+                                <input type="button" class="atag" id="reconfig" value="RECONFIG"> =======
+                                <!-- <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"> -->
+                                <table id="topspeler" style="display: none" class="table table-curved table responsive">
+                                    <tbody><tr>
+                                        <td class="heading panel-title">Name : </td>
+                                        <td class="heading panel-title">columns : </td>
+                                        <td class="heading panel-title">Rows : </td>
+                                        <td class="heading panel-title">Time : </td>
+                                        <td class="heading panel-title">Mines : </td>
+                                        <td class="heading panel-title">Date : </td>
+                                    </tr>
+                                </tbody></table>
+                                &gt;&gt;&gt;&gt;&gt;&gt;&gt; 8e6c301dbf6552b0cd92cda79209b2205d2376b2
+                            </div>
+                            <div class="col-md-4 middleBtns">
+                                <input type="button" id="btn_pause" value="PAUSE" class="btn btn-danger" hidden="">
+                                <input type="button" id="btn_restart" value="CONTINUE" class="btn btn-danger" hidden="">
+                                <!-- <div class="buttonhide1"> -->
+                                <input type="submit" id="btn2" value="SUBMIT SCORE" onclick="timeOnGameStop()" class="submitBtn btn btn-danger">
+                            </div>
+                            <div class="col-md-2 atagBox2">
+                                <!-- <input type="button" id="newgame" value="NEW GAME" class="btn btn-warning"> -->
+                                <input type="button" class="atag" value="NEW GAME" id="newGame">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Spelknoppen afsluiten -->
+                </div>
+                <!-- container afsluiten -->
+            </div>
+            <!-- wrapper afsluiten -->
+        </div>
+        <!-- background afsluiten -->
+
+        <!-- ////////////// Sound Effects ///////////// -->
+        <audio id="playExplosion" src="sounds/Explosion.mp3" type="audio/mpeg"></audio>
+        <audio id="playTaDa" src="sounds/Ta-da-orchestra-fanfare.mp3" type="audio/mpeg"></audio>
+
+        <script src="./Minesweeper_files/bootstrap.min.js.download" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<div class="star f6" style=" z-index: 0 ; top:87px;left:416px;"></div><div class="star f9" style=" z-index: 0 ; top:42px;left:1067px;"></div><div class="star f6" style=" z-index: 0 ; top:10px;left:873px;"></div><div class="star f3" style=" z-index: 0 ; top:448px;left:929px;"></div><div class="star f6" style=" z-index: 0 ; top:491px;left:1129px;"></div><div class="star f3" style=" z-index: 0 ; top:440px;left:213px;"></div><div class="star f0" style=" z-index: 0 ; top:560px;left:423px;"></div><div class="star f2" style=" z-index: 0 ; top:481px;left:207px;"></div><div class="star f9" style=" z-index: 0 ; top:9px;left:1278px;"></div><div class="star f9" style=" z-index: 0 ; top:542px;left:1267px;"></div><div class="star f2" style=" z-index: 0 ; top:161px;left:778px;"></div><div class="star f9" style=" z-index: 0 ; top:243px;left:1319px;"></div><div class="star f1" style=" z-index: 0 ; top:0px;left:618px;"></div><div class="star f7" style=" z-index: 0 ; top:509px;left:1306px;"></div><div class="star f6" style=" z-index: 0 ; top:221px;left:733px;"></div><div class="star f4" style=" z-index: 0 ; top:316px;left:152px;"></div><div class="star f8" style=" z-index: 0 ; top:303px;left:604px;"></div><div class="star f1" style=" z-index: 0 ; top:495px;left:704px;"></div><div class="star f1" style=" z-index: 0 ; top:440px;left:781px;"></div><div class="star f4" style=" z-index: 0 ; top:327px;left:896px;"></div><div class="star f9" style=" z-index: 0 ; top:261px;left:1191px;"></div><div class="star f8" style=" z-index: 0 ; top:423px;left:910px;"></div><div class="star f2" style=" z-index: 0 ; top:460px;left:575px;"></div><div class="star f7" style=" z-index: 0 ; top:485px;left:1292px;"></div><div class="star f8" style=" z-index: 0 ; top:119px;left:534px;"></div><div class="star f4" style=" z-index: 0 ; top:327px;left:1241px;"></div><div class="star f9" style=" z-index: 0 ; top:39px;left:1099px;"></div><div class="star f1" style=" z-index: 0 ; top:315px;left:552px;"></div><div class="star f3" style=" z-index: 0 ; top:57px;left:538px;"></div><div class="star f7" style=" z-index: 0 ; top:185px;left:297px;"></div><div class="star f9" style=" z-index: 0 ; top:285px;left:1033px;"></div><div class="star f5" style=" z-index: 0 ; top:332px;left:700px;"></div><div class="star f6" style=" z-index: 0 ; top:259px;left:47px;"></div><div class="star f5" style=" z-index: 0 ; top:583px;left:76px;"></div><div class="star f8" style=" z-index: 0 ; top:28px;left:579px;"></div><div class="star f3" style=" z-index: 0 ; top:15px;left:860px;"></div><div class="star f3" style=" z-index: 0 ; top:314px;left:182px;"></div><div class="star f8" style=" z-index: 0 ; top:498px;left:275px;"></div><div class="star f9" style=" z-index: 0 ; top:511px;left:450px;"></div><div class="star f4" style=" z-index: 0 ; top:363px;left:1155px;"></div><div class="star f0" style=" z-index: 0 ; top:358px;left:563px;"></div><div class="star f8" style=" z-index: 0 ; top:114px;left:603px;"></div><div class="star f6" style=" z-index: 0 ; top:522px;left:1218px;"></div><div class="star f3" style=" z-index: 0 ; top:560px;left:100px;"></div><div class="star f7" style=" z-index: 0 ; top:355px;left:420px;"></div><div class="star f3" style=" z-index: 0 ; top:332px;left:1085px;"></div><div class="star f0" style=" z-index: 0 ; top:468px;left:295px;"></div><div class="star f0" style=" z-index: 0 ; top:182px;left:105px;"></div><div class="star f1" style=" z-index: 0 ; top:230px;left:1048px;"></div><div class="star f8" style=" z-index: 0 ; top:560px;left:436px;"></div><div class="star f5" style=" z-index: 0 ; top:158px;left:538px;"></div><div class="star f4" style=" z-index: 0 ; top:283px;left:1112px;"></div><div class="star f3" style=" z-index: 0 ; top:83px;left:645px;"></div><div class="star f1" style=" z-index: 0 ; top:58px;left:571px;"></div><div class="star f4" style=" z-index: 0 ; top:282px;left:1082px;"></div><div class="star f2" style=" z-index: 0 ; top:395px;left:1282px;"></div><div class="star f3" style=" z-index: 0 ; top:125px;left:11px;"></div><div class="star f9" style=" z-index: 0 ; top:83px;left:1107px;"></div><div class="star f2" style=" z-index: 0 ; top:12px;left:535px;"></div><div class="star f0" style=" z-index: 0 ; top:252px;left:948px;"></div><div class="star f2" style=" z-index: 0 ; top:201px;left:181px;"></div><div class="star f9" style=" z-index: 0 ; top:342px;left:422px;"></div><div class="star f8" style=" z-index: 0 ; top:424px;left:1258px;"></div><div class="star f4" style=" z-index: 0 ; top:14px;left:318px;"></div><div class="star f9" style=" z-index: 0 ; top:26px;left:703px;"></div><div class="star f2" style=" z-index: 0 ; top:155px;left:84px;"></div><div class="star f2" style=" z-index: 0 ; top:40px;left:1324px;"></div><div class="star f2" style=" z-index: 0 ; top:64px;left:1278px;"></div><div class="star f7" style=" z-index: 0 ; top:119px;left:730px;"></div><div class="star f2" style=" z-index: 0 ; top:536px;left:1256px;"></div><div class="star f0" style=" z-index: 0 ; top:221px;left:1103px;"></div><div class="star f9" style=" z-index: 0 ; top:563px;left:573px;"></div><div class="star f1" style=" z-index: 0 ; top:189px;left:717px;"></div><div class="star f5" style=" z-index: 0 ; top:161px;left:784px;"></div><div class="star f5" style=" z-index: 0 ; top:285px;left:1145px;"></div><div class="star f6" style=" z-index: 0 ; top:43px;left:678px;"></div><div class="star f6" style=" z-index: 0 ; top:241px;left:908px;"></div><div class="star f3" style=" z-index: 0 ; top:155px;left:845px;"></div><div class="star f7" style=" z-index: 0 ; top:87px;left:528px;"></div><div class="star f9" style=" z-index: 0 ; top:298px;left:540px;"></div><div class="star f7" style=" z-index: 0 ; top:160px;left:580px;"></div><div class="star f6" style=" z-index: 0 ; top:260px;left:671px;"></div><div class="star f7" style=" z-index: 0 ; top:38px;left:543px;"></div><div class="star f5" style=" z-index: 0 ; top:579px;left:18px;"></div><div class="star f4" style=" z-index: 0 ; top:94px;left:1342px;"></div><div class="star f8" style=" z-index: 0 ; top:193px;left:1021px;"></div><div class="star f0" style=" z-index: 0 ; top:402px;left:1321px;"></div><div class="star f1" style=" z-index: 0 ; top:99px;left:1245px;"></div><div class="star f1" style=" z-index: 0 ; top:268px;left:1171px;"></div><div class="star f4" style=" z-index: 0 ; top:384px;left:257px;"></div><div class="star f9" style=" z-index: 0 ; top:4px;left:83px;"></div><div class="star f2" style=" z-index: 0 ; top:420px;left:445px;"></div><div class="star f1" style=" z-index: 0 ; top:54px;left:1076px;"></div><div class="star f9" style=" z-index: 0 ; top:159px;left:1087px;"></div><div class="star f8" style=" z-index: 0 ; top:270px;left:216px;"></div><div class="star f0" style=" z-index: 0 ; top:311px;left:695px;"></div><div class="star f9" style=" z-index: 0 ; top:442px;left:268px;"></div><div class="star f8" style=" z-index: 0 ; top:461px;left:837px;"></div><div class="star f7" style=" z-index: 0 ; top:589px;left:816px;"></div><div class="star f6" style=" z-index: 0 ; top:286px;left:922px;"></div><div class="star f2" style=" z-index: 0 ; top:532px;left:245px;"></div><div class="star f7" style=" z-index: 0 ; top:560px;left:482px;"></div><div class="star f6" style=" z-index: 0 ; top:110px;left:912px;"></div><div class="star f9" style=" z-index: 0 ; top:578px;left:196px;"></div><div class="star f8" style=" z-index: 0 ; top:574px;left:514px;"></div><div class="star f3" style=" z-index: 0 ; top:18px;left:675px;"></div><div class="star f6" style=" z-index: 0 ; top:47px;left:132px;"></div><div class="star f7" style=" z-index: 0 ; top:550px;left:1313px;"></div><div class="star f0" style=" z-index: 0 ; top:415px;left:744px;"></div><div class="star f3" style=" z-index: 0 ; top:320px;left:764px;"></div><div class="star f0" style=" z-index: 0 ; top:61px;left:62px;"></div><div class="star f1" style=" z-index: 0 ; top:417px;left:513px;"></div><div class="star f3" style=" z-index: 0 ; top:206px;left:1031px;"></div><div class="star f4" style=" z-index: 0 ; top:551px;left:366px;"></div><div class="star f6" style=" z-index: 0 ; top:115px;left:518px;"></div><div class="star f6" style=" z-index: 0 ; top:27px;left:1050px;"></div><div class="star f8" style=" z-index: 0 ; top:344px;left:1272px;"></div><div class="star f1" style=" z-index: 0 ; top:321px;left:1128px;"></div><div class="star f1" style=" z-index: 0 ; top:167px;left:520px;"></div><div class="star f4" style=" z-index: 0 ; top:324px;left:376px;"></div><div class="star f6" style=" z-index: 0 ; top:277px;left:123px;"></div><div class="star f9" style=" z-index: 0 ; top:328px;left:499px;"></div><div class="star f4" style=" z-index: 0 ; top:576px;left:929px;"></div><div class="star f8" style=" z-index: 0 ; top:460px;left:392px;"></div><div class="star f9" style=" z-index: 0 ; top:103px;left:1124px;"></div><div class="star f5" style=" z-index: 0 ; top:588px;left:404px;"></div><div class="star f0" style=" z-index: 0 ; top:293px;left:677px;"></div><div class="star f0" style=" z-index: 0 ; top:2px;left:694px;"></div><div class="star f8" style=" z-index: 0 ; top:26px;left:1173px;"></div><div class="star f0" style=" z-index: 0 ; top:253px;left:479px;"></div><div class="star f7" style=" z-index: 0 ; top:109px;left:265px;"></div><div class="star f7" style=" z-index: 0 ; top:119px;left:316px;"></div><div class="star f9" style=" z-index: 0 ; top:296px;left:1048px;"></div><div class="star f2" style=" z-index: 0 ; top:1px;left:691px;"></div><div class="star f3" style=" z-index: 0 ; top:443px;left:126px;"></div><div class="star f8" style=" z-index: 0 ; top:192px;left:119px;"></div><div class="star f9" style=" z-index: 0 ; top:102px;left:89px;"></div><div class="star f3" style=" z-index: 0 ; top:583px;left:139px;"></div><div class="star f0" style=" z-index: 0 ; top:311px;left:923px;"></div><div class="star f3" style=" z-index: 0 ; top:461px;left:1130px;"></div><div class="star f1" style=" z-index: 0 ; top:248px;left:13px;"></div><div class="star f6" style=" z-index: 0 ; top:287px;left:1307px;"></div><div class="star f4" style=" z-index: 0 ; top:477px;left:651px;"></div><div class="star f6" style=" z-index: 0 ; top:235px;left:940px;"></div><div class="star f9" style=" z-index: 0 ; top:430px;left:270px;"></div><div class="star f1" style=" z-index: 0 ; top:235px;left:1084px;"></div><div class="star f4" style=" z-index: 0 ; top:268px;left:316px;"></div><div class="star f5" style=" z-index: 0 ; top:150px;left:997px;"></div><div class="star f0" style=" z-index: 0 ; top:422px;left:570px;"></div><div class="star f4" style=" z-index: 0 ; top:461px;left:278px;"></div><div class="star f0" style=" z-index: 0 ; top:189px;left:2px;"></div><div class="star f8" style=" z-index: 0 ; top:353px;left:1066px;"></div><div class="star f8" style=" z-index: 0 ; top:511px;left:1322px;"></div><div class="star f9" style=" z-index: 0 ; top:517px;left:481px;"></div><div class="star f6" style=" z-index: 0 ; top:527px;left:195px;"></div><div class="star f5" style=" z-index: 0 ; top:210px;left:1028px;"></div><div class="star f1" style=" z-index: 0 ; top:183px;left:1031px;"></div><div class="star f5" style=" z-index: 0 ; top:89px;left:1090px;"></div><div class="star f6" style=" z-index: 0 ; top:420px;left:965px;"></div><div class="star f6" style=" z-index: 0 ; top:102px;left:1341px;"></div><div class="star f2" style=" z-index: 0 ; top:170px;left:1339px;"></div><div class="star f6" style=" z-index: 0 ; top:93px;left:122px;"></div><div class="star f8" style=" z-index: 0 ; top:447px;left:1145px;"></div><div class="star f4" style=" z-index: 0 ; top:121px;left:951px;"></div><div class="star f3" style=" z-index: 0 ; top:168px;left:385px;"></div><div class="star f0" style=" z-index: 0 ; top:407px;left:3px;"></div><div class="star f9" style=" z-index: 0 ; top:387px;left:208px;"></div><div class="star f1" style=" z-index: 0 ; top:184px;left:129px;"></div><div class="star f6" style=" z-index: 0 ; top:292px;left:742px;"></div><div class="star f6" style=" z-index: 0 ; top:55px;left:845px;"></div><div class="star f2" style=" z-index: 0 ; top:39px;left:171px;"></div><div class="star f1" style=" z-index: 0 ; top:316px;left:827px;"></div><div class="star f7" style=" z-index: 0 ; top:339px;left:256px;"></div><div class="star f1" style=" z-index: 0 ; top:306px;left:744px;"></div><div class="star f6" style=" z-index: 0 ; top:182px;left:744px;"></div><div class="star f1" style=" z-index: 0 ; top:427px;left:632px;"></div><div class="star f0" style=" z-index: 0 ; top:292px;left:585px;"></div><div class="star f2" style=" z-index: 0 ; top:260px;left:650px;"></div><div class="star f9" style=" z-index: 0 ; top:305px;left:268px;"></div><div class="star f5" style=" z-index: 0 ; top:217px;left:179px;"></div><div class="star f0" style=" z-index: 0 ; top:378px;left:597px;"></div><div class="star f3" style=" z-index: 0 ; top:199px;left:1068px;"></div><div class="star f4" style=" z-index: 0 ; top:357px;left:419px;"></div><div class="star f5" style=" z-index: 0 ; top:175px;left:1333px;"></div><div class="star f6" style=" z-index: 0 ; top:548px;left:786px;"></div><div class="star f3" style=" z-index: 0 ; top:507px;left:193px;"></div><div class="star f4" style=" z-index: 0 ; top:174px;left:1327px;"></div><div class="star f5" style=" z-index: 0 ; top:266px;left:48px;"></div><div class="star f3" style=" z-index: 0 ; top:403px;left:1156px;"></div><div class="star f2" style=" z-index: 0 ; top:340px;left:1044px;"></div><div class="star f9" style=" z-index: 0 ; top:506px;left:685px;"></div><div class="star f6" style=" z-index: 0 ; top:334px;left:1334px;"></div><div class="star f4" style=" z-index: 0 ; top:433px;left:1221px;"></div><div class="star f7" style=" z-index: 0 ; top:105px;left:1316px;"></div><div class="star f5" style=" z-index: 0 ; top:141px;left:1321px;"></div><div class="star f7" style=" z-index: 0 ; top:101px;left:749px;"></div><div class="star f7" style=" z-index: 0 ; top:276px;left:1094px;"></div><div class="star f4" style=" z-index: 0 ; top:207px;left:763px;"></div><div class="star f0" style=" z-index: 0 ; top:82px;left:931px;"></div><div class="star f0" style=" z-index: 0 ; top:423px;left:1224px;"></div></div></body></html>
